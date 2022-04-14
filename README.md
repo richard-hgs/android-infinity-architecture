@@ -1,4 +1,4 @@
-# android-infinity-libs
+# android-infinity-architecture
 Android Jetpack, Architecture, MVVM, DAO, API, GSON - Base Android Foundation Libraries
 
 Soon...

@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ================================= THEMES ================================== -->
+    <!-- DAY NIGHT DARK ACTIONBAR -->
+    <style name="Theme.InfinityComponents.DayNight.DarkActionBar" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- TextInputLayout Style -->
+        <item name="textInputStyle">@style/InfinityTextInputLayoutNoneStyle</item>
+        <item name="textInputOutlinedStyle">@style/InfinityTextInputLayoutOutlinedStyle</item>
+        <item name="textInputOutlinedDenseStyle">@style/InfinityTextInputLayoutOutlinedDenseStyle</item>
+        <item name="textInputFilledStyle">@style/InfinityTextInputLayoutFilledStyle</item>
+        <item name="textInputFilledDenseStyle">@style/InfinityTextInputLayoutFilledDenseStyle</item>
+
+        <!-- InfinityButton Style -->
+        <item name="infinityButtonStyle">@style/InfinityButtonStyle</item>
+        <!-- InfinityImageButton Style -->
+        <item name="infinityImageButtonStyle">@style/InfinityImageButtonStyle</item>
+        <!-- InfinityEditText Style -->
+        <item name="infinityEditTextStyle">@style/InfinityEditTextStyle</item>
+        <!-- InfinityTextInputLayout Style -->
+        <item name="customTextInputLayoutStyle">@style/InfinityTextInputLayoutStyle</item>
+        <!-- InfinityTextInputEditText Style -->
+        <item name="infinityTextInputEditTextStyle">@style/InfinityTextInputEditTextStyle</item>
+    </style>
+
+    <!-- =============================== REFERENCES ================================ -->
+    <!-- INFINITY_BUTTON -->
+    <attr format="reference" name="infinityButtonStyle" />
+    <!-- INFINITY_IMAGE_BUTTON -->
+    <attr format="reference" name="infinityImageButtonStyle" />
+    <!-- INFINITY_IMAGE_VIEW -->
+    <attr format="reference" name="infinityImageViewStyle" />
+    <!-- INFINITY_EDIT_TEXT -->
+    <attr format="reference" name="infinityEditTextStyle" />
+    <!-- INFINITY_TEXT_INPUT_LAYOUT -->
+    <attr format="reference" name="customTextInputLayoutStyle" />
+    <attr format="reference" name="customTextInputLayoutNoneStyle" />
+    <attr format="reference" name="customTextInputLayoutNoneDenseStyle" />
+    <attr format="reference" name="customTextInputLayoutFilledStyle" />
+    <attr format="reference" name="customTextInputLayoutFilledDenseStyle" />
+    <attr format="reference" name="customTextInputLayoutOutlinedStyle" />
+    <attr format="reference" name="customTextInputLayoutOutlinedDenseStyle" />
+    <!-- INFINITY_TEXT_INPUT_EDIT_TEXT -->
+    <attr format="reference" name="infinityTextInputEditTextStyle" />
+
+    <!-- ============================= DEFAULT STYLES ============================== -->
+    <!-- INFINITY_BUTTON -->
+    <style name="InfinityButtonStyle">
+        <!-- android:Widget.Button -->
+        <!-- Background not implemented since it is programmatically created
+        <item name="android:background">@drawable/btn_default</item> -->
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceButton</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <!-- InfinityButton -->
+        <item name="bg_color">?android:attr/colorPrimary</item>
+        <item name="bg_radius">0</item>
+        <item name="bg_radius_top_left">0</item>
+        <item name="bg_radius_top_right">0</item>
+        <item name="bg_radius_bottom_right">0</item>
+        <item name="bg_radius_bottom_left">0</item>
+        <item name="bg_border_color">@android:color/transparent</item>
+        <item name="bg_border_width">0dp</item>
+        <item name="bg_shape_type">2</item>
+    </style>
+
+    <!-- INFINITY_IMAGE_BUTTON -->
+    <style name="InfinityImageButtonStyle" parent="android:Widget.ImageButton">
+        <!-- android:Widget.ImageButton -->
+        <!-- Background not implemented since it is programmatically created
+        <item name="android:background">@drawable/btn_default</item> -->
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:scaleType">center</item>
+        <!-- InfinityImageButton -->
+        <item name="bg_color">?android:attr/colorPrimary</item>
+        <item name="bg_radius">0</item>
+        <item name="bg_radius_top_left">0</item>
+        <item name="bg_radius_top_right">0</item>
+        <item name="bg_radius_bottom_right">0</item>
+        <item name="bg_radius_bottom_left">0</item>
+        <item name="bg_border_color">@android:color/transparent</item>
+        <item name="bg_border_width">0dp</item>
+        <item name="bg_shape_type">2</item>
+        <item name="src">@null</item>
+        <item name="src_placeholder">@null</item>
+        <item name="src_error">@null</item>
+        <item name="src_transition_type">crossfade</item>
+        <item name="src_transition_duration">300</item>
+    </style>
+
+    <!-- INFINITY_IMAGE_VIEW -->
+    <style name="InfinityImageViewStyle">
+        <!-- Parent is null because android doesn't have a style for ImageView -->
+        <item name="blur_color">@android:color/transparent</item>
+        <item name="blur_enabled">false</item>
+        <item name="blur_type">overlap</item>
+        <item name="blur_radius">5</item>
+        <item name="bg_color">@android:color/transparent</item>
+        <item name="bg_radius">0</item>
+        <item name="bg_radius_top_left">0</item>
+        <item name="bg_radius_top_right">0</item>
+        <item name="bg_radius_bottom_right">0</item>
+        <item name="bg_radius_bottom_left">0</item>
+        <item name="bg_border_color">@android:color/transparent</item>
+        <item name="bg_border_width">0dp</item>
+        <item name="src">@null</item>
+        <item name="src_placeholder">@null</item>
+        <item name="src_error">@null</item>
+        <item name="src_scale_type">none</item>
+        <item name="src_resize_px_height">-1</item>
+        <item name="src_resize_px_width">-1</item>
+        <item name="src_resize_dimen_height">-1dp</item>
+        <item name="src_resize_dimen_width">-1dp</item>
+        <item name="src_transition_type">crossfade</item>
+        <item name="src_transition_duration">300</item>
+        <item name="src_radius">0</item>
+        <item name="src_radius_top_left">0</item>
+        <item name="src_radius_top_right">0</item>
+        <item name="src_radius_bottom_right">0</item>
+        <item name="src_radius_bottom_left">0</item>
+    </style>
+
+    <!-- INFINITY_EDIT_TEXT -->
+    <style name="InfinityEditTextStyle" parent="android:Widget.EditText">
+        <item name="bg_color">@android:color/transparent</item>
+        <item name="bg_color_focused">@android:color/transparent</item>
+        <item name="bg_radius">0</item>
+        <item name="bg_radius_focused">0</item>
+        <item name="bg_radius_top_left">0</item>
+        <item name="bg_radius_top_left_focused">0</item>
+        <item name="bg_radius_top_right">0</item>
+        <item name="bg_radius_top_right_focused">0</item>
+        <item name="bg_radius_bottom_right">0</item>
+        <item name="bg_radius_bottom_right_focused">0</item>
+        <item name="bg_radius_bottom_left">0</item>
+        <item name="bg_radius_bottom_left_focused">0</item>
+        <item name="bg_border_color">@android:color/transparent</item>
+        <item name="bg_border_color_focused">@android:color/transparent</item>
+        <item name="bg_border_width">0dp</item>
+        <item name="bg_border_width_focused">0dp</item>
+        <item name="bg_shape_type">2</item>
+        <item name="mask_type">0</item>
+        <item name="mask_monetary_decimal_places">2</item>
+        <item name="mask_monetary_show_currency">true</item>
+        <item name="mask_monetary_locale">0</item>
+        <item name="mask_allow_pass_mask_length">false</item>
+        <item name="password_toggle_enabled">false</item>
+    </style>
+
+    <!-- ============================= INFINITY TEXT INPUT LAYOUT ============================== !-->
+    <!-- INFINITY_TEXT_INPUT_LAYOUT -->
+    <style name="InfinityTextInputLayoutStyle" parent="">
+        <!-- This is the TextInputLayout Theme customization in fact configure the boxBackgroundMode
+             and the styles that each boxBackgroundMode will inherits from -->
+        <item name="customBoxBackgroundMode">none</item>
+        <item name="customTextInputLayoutNoneStyle">@style/InfinityTextInputLayoutNoneStyle</item>
+        <item name="customTextInputLayoutNoneDenseStyle">@style/InfinityTextInputLayoutNoneDenseStyle</item>
+        <item name="customTextInputLayoutFilledStyle">@style/InfinityTextInputLayoutFilledStyle</item>
+        <item name="customTextInputLayoutFilledDenseStyle">@style/InfinityTextInputLayoutFilledDenseStyle</item>
+        <item name="customTextInputLayoutOutlinedStyle">@style/InfinityTextInputLayoutOutlinedStyle</item>
+        <item name="customTextInputLayoutOutlinedDenseStyle">@style/InfinityTextInputLayoutOutlinedDenseStyle</item>
+
+        <item name="incrementCollapsedPaddingLeft">0dp</item>
+        <item name="incrementCollapsedPaddingTop">0dp</item>
+        <item name="incrementCollapsedPaddingRight">0dp</item>
+
+<!--        <item name="bg_color">@android:color/transparent</item>-->
+<!--        <item name="bg_color_focused">@android:color/transparent</item>-->
+<!--        <item name="bg_radius">0</item>-->
+<!--        <item name="bg_radius_focused">0</item>-->
+<!--        <item name="bg_radius_top_left">0</item>-->
+<!--        <item name="bg_radius_top_left_focused">0</item>-->
+<!--        <item name="bg_radius_top_right">0</item>-->
+<!--        <item name="bg_radius_top_right_focused">0</item>-->
+<!--        <item name="bg_radius_bottom_right">0</item>-->
+<!--        <item name="bg_radius_bottom_right_focused">0</item>-->
+<!--        <item name="bg_radius_bottom_left">0</item>-->
+<!--        <item name="bg_radius_bottom_left_focused">0</item>-->
+<!--        <item name="bg_border_color">@android:color/transparent</item>-->
+<!--        <item name="bg_border_color_focused">@android:color/transparent</item>-->
+<!--        <item name="bg_border_width">0dp</item>-->
+<!--        <item name="bg_border_width_focused">0dp</item>-->
+<!--        <item name="bg_shape_type">2</item>-->
+    </style>
+
+    <!-- INFINITY_TEXT_INPUT_LAYOUT boxBackgroundMode: NONE -->
+    <style name="InfinityTextInputLayoutNoneStyle">
+        <item name="textInputStyle">@style/Infinity.TextInputLayoutNoneStyle</item>
+    </style>
+    <style name="Infinity.TextInputLayoutNoneStyle" parent="Widget.Design.TextInputLayout">
+        <item name="materialThemeOverlay">@style/Infinity.TextInputEditTextNoneStyle.MaterialThemeOverlay</item>
+    </style>
+    <style name="Infinity.TextInputEditTextNoneStyle.MaterialThemeOverlay" parent="">
+        <item name="editTextStyle">@style/Infinity.TextInputEditTextNoneStyle</item>
+    </style>
+    <style name="Infinity.TextInputEditTextNoneStyle" parent="android:Widget.EditText">
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+
+    <!-- INFINITY_TEXT_INPUT_LAYOUT boxBackgroundMode: NONE DENSE -->
+    <style name="InfinityTextInputLayoutNoneDenseStyle">
+        <item name="textInputStyle">@style/Infinity.TextInputLayoutNoneDenseStyle</item>
+    </style>
+    <style name="Infinity.TextInputLayoutNoneDenseStyle" parent="Widget.Design.TextInputLayout">
+        <item name="materialThemeOverlay">@style/Infinity.TextInputLayoutNoneDenseStyle.MaterialThemeOverlay</item>
+        <item name="android:paddingTop">0dp</item>
+    </style>
+    <style name="Infinity.TextInputLayoutNoneDenseStyle.MaterialThemeOverlay" parent="">
+        <item name="editTextStyle">@style/Infinity.TextInputEditTextNoneDenseStyle</item>
+    </style>
+    <style name="Infinity.TextInputEditTextNoneDenseStyle" parent="android:Widget.EditText">
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <!-- INFINITY_TEXT_INPUT_LAYOUT - boxBackgroundMode: FILLED_BOX -->
+    <style name="InfinityTextInputLayoutFilledStyle">
+        <item name="textInputStyle">@style/Infinity.TextInputLayoutFilledStyle</item>
+    </style>
+    <style name="Infinity.TextInputLayoutFilledStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="materialThemeOverlay">@style/Infinity.TextInputLayoutFilledStyle.MaterialThemeOverlay</item>
+        <item name="boxCollapsedPaddingTop">2dp</item>
+    </style>
+    <style name="Infinity.TextInputLayoutFilledStyle.MaterialThemeOverlay" parent="ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="editTextStyle">@style/Infinity.TextInputEditTextFilledStyle</item>
+    </style>
+    <style name="Infinity.TextInputEditTextFilledStyle" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <!-- INFINITY_TEXT_INPUT_LAYOUT - boxBackgroundMode: FILLED_DENSE -->
+    <style name="InfinityTextInputLayoutFilledDenseStyle">
+        <item name="textInputStyle">@style/Infinity.TextInputLayoutFilledDenseStyle</item>
+    </style>
+    <style name="Infinity.TextInputLayoutFilledDenseStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="materialThemeOverlay">@style/Infinity.TextInputLayoutFilledDenseStyle.MaterialThemeOverlay</item>
+        <item name="boxCollapsedPaddingTop">2dp</item>
+    </style>
+    <style name="Infinity.TextInputLayoutFilledDenseStyle.MaterialThemeOverlay" parent="ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="editTextStyle">@style/Infinity.TextInputEditTextFilledDenseStyle</item>
+    </style>
+    <style name="Infinity.TextInputEditTextFilledDenseStyle" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+    <!-- INFINITY_TEXT_INPUT_LAYOUT - boxBackgroundMode: OUTLINE_BOX -->
+    <style name="InfinityTextInputLayoutOutlinedStyle">
+        <item name="textInputStyle">@style/Infinity.TextInputLayoutOutlinedStyle</item>
+    </style>
+    <style name="Infinity.TextInputLayoutOutlinedStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="materialThemeOverlay">@style/Infinity.TextInputLayoutOutlinedStyle.MaterialThemeOverlay</item>
+        <item name="boxCollapsedPaddingTop">2dp</item>
+    </style>
+    <style name="Infinity.TextInputLayoutOutlinedStyle.MaterialThemeOverlay" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="editTextStyle">@style/Infinity.TextInputEditTextOutlinedStyle</item>
+    </style>
+    <style name="Infinity.TextInputEditTextOutlinedStyle" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:paddingTop">13dp</item>
+        <item name="android:paddingBottom">13dp</item>
+    </style>
+
+    <!-- INFINITY_TEXT_INPUT_LAYOUT - boxBackgroundMode: OUTLINE_BOX DENSE -->
+    <style name="InfinityTextInputLayoutOutlinedDenseStyle">
+        <item name="textInputStyle">@style/Infinity.TextInputLayoutOutlinedDenseStyle</item>
+    </style>
+    <style name="Infinity.TextInputLayoutOutlinedDenseStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="materialThemeOverlay">@style/Infinity.TextInputLayoutOutlinedDenseStyle.MaterialThemeOverlay</item>
+        <item name="boxCollapsedPaddingTop">2dp</item>
+    </style>
+    <style name="Infinity.TextInputLayoutOutlinedDenseStyle.MaterialThemeOverlay" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="editTextStyle">@style/Infinity.TextInputEditTextOutlinedDenseStyle</item>
+    </style>
+    <style name="Infinity.TextInputEditTextOutlinedDenseStyle" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="InfinityTextInputEditTextStyle">
+        <item name="bg_color">@android:color/transparent</item>
+        <item name="bg_color_focused">@android:color/transparent</item>
+        <item name="bg_radius">0</item>
+        <item name="bg_radius_focused">0</item>
+        <item name="bg_radius_top_left">0</item>
+        <item name="bg_radius_top_left_focused">0</item>
+        <item name="bg_radius_top_right">0</item>
+        <item name="bg_radius_top_right_focused">0</item>
+        <item name="bg_radius_bottom_right">0</item>
+        <item name="bg_radius_bottom_right_focused">0</item>
+        <item name="bg_radius_bottom_left">0</item>
+        <item name="bg_radius_bottom_left_focused">0</item>
+        <item name="bg_border_color">@android:color/transparent</item>
+        <item name="bg_border_color_focused">@android:color/transparent</item>
+        <item name="bg_border_width">0dp</item>
+        <item name="bg_border_width_focused">0dp</item>
+        <item name="bg_shape_type">2</item>
+    </style>
+
+<!--        <attr name="blur_enabled" format="boolean" />-->
+<!--        <attr name="blur_type" format="integer">-->
+<!--            <enum name="overlap" value="1" />-->
+<!--            <enum name="defocus" value="2" />-->
+<!--            <enum name="overlap_defocus" value="3" />-->
+<!--        </attr>-->
+<!--        <attr name="blur_radius" format="float"/>-->
+<!--        <attr name="bg_color" />-->
+<!--        <attr name="bg_radius" />-->
+<!--        <attr name="bg_radius_top_left" />-->
+<!--        <attr name="bg_radius_top_right" />-->
+<!--        <attr name="bg_radius_bottom_left" />-->
+<!--        <attr name="bg_radius_bottom_right" />-->
+<!--        <attr name="bg_border_color" />-->
+<!--        <attr name="bg_border_width" />-->
+
+    <!-- ========================== INFINITY ATTRIBUTES ======================= -->
+    <!-- COMMON_ATTRIBUTES -->
+    <attr name="bg_color" format="color" />
+    <attr name="bg_color_focused" format="color" />
+    <attr name="bg_radius" format="integer" />
+    <attr name="bg_radius_focused" format="integer" />
+    <attr name="bg_radius_top_left" format="integer" />
+    <attr name="bg_radius_top_left_focused" format="integer" />
+    <attr name="bg_radius_top_right" format="integer" />
+    <attr name="bg_radius_top_right_focused" format="integer" />
+    <attr name="bg_radius_bottom_right" format="integer" />
+    <attr name="bg_radius_bottom_right_focused" format="integer" />
+    <attr name="bg_radius_bottom_left" format="integer" />
+    <attr name="bg_radius_bottom_left_focused" format="integer" />
+    <attr name="bg_border_color" format="color" />
+    <attr name="bg_border_color_focused" format="color" />
+    <attr name="bg_border_width" format="dimension" />
+    <attr name="bg_border_width_focused" format="dimension" />
+    <attr name="bg_shape_type" format="integer">
+        <enum name="oval" value="1" />
+        <enum name="rectangle" value="2" />
+    </attr>
+
+    <!-- Whether the text input area should be drawn as a filled box, an outline box, or not as a box.-->
+    <attr name="customBoxBackgroundMode" format="integer">
+        <!-- Specifies that there should be no box set on the text input area. -->
+        <enum name="none" value="0"/>
+        <!-- Specifies that there should be no box set on the text input area. Dense version -->
+        <enum name="none_dense" value="1"/>
+        <!-- Filled box mode for the text input box. -->
+        <enum name="filled" value="2"/>
+        <!-- Filled box mode for the text input box. Dense version -->
+        <enum name="filled_dense" value="3"/>
+        <!-- Outline box mode for the text input box. -->
+        <enum name="outline" value="4"/>
+        <!-- Outline box mode for the text input box. Dense version -->
+        <enum name="outline_dense" value="5"/>
+    </attr>
+    <attr name="incrementCollapsedPaddingLeft" format="dimension" />
+    <attr name="incrementCollapsedPaddingTop" format="dimension" />
+    <attr name="incrementCollapsedPaddingRight" format="dimension" />
+
+    <attr name="src" format="reference|color|string" />
+    <attr name="src_placeholder" format="reference" />
+    <attr name="src_error" format="reference" />
+    <attr name="src_scale_type" format="integer">
+        <enum name="none" value="0" />
+        <enum name="center_crop" value="1" />
+        <enum name="center_inside" value="2" />
+    </attr>
+    <attr name="src_resize_px_height" format="integer" />
+    <attr name="src_resize_px_width" format="integer" />
+    <attr name="src_resize_dimen_height" format="dimension" />
+    <attr name="src_resize_dimen_width" format="dimension" />
+    <attr name="src_transition_type" format="integer">
+        <enum name="none" value="0" />
+        <enum name="crossfade" value="1" />
+    </attr>
+    <attr name="src_transition_duration" format="integer" />
+    <attr name="src_radius" format="integer" />
+    <attr name="src_radius_top_left" format="integer" />
+    <attr name="src_radius_top_right" format="integer" />
+    <attr name="src_radius_bottom_right" format="integer" />
+    <attr name="src_radius_bottom_left" format="integer" />
+
+    <attr name="mask_type" format="integer">
+        <enum name="cpf" value="1" />
+        <enum name="cellphone_1" value="2" />
+        <enum name="phone_1" value="3" />
+        <enum name="cep" value="4" />
+        <enum name="date_1" value="5" />
+        <enum name="hour_1" value="6" />
+        <enum name="cnpj" value="7" />
+        <enum name="rg" value="8" />
+        <enum name="bank_agency" value="9" />
+        <enum name="bank_account" value="10" />
+        <enum name="monetary" value="11" />
+        <enum name="credit_card" value="12" />
+        <enum name="debit_card" value="13" />
+        <enum name="card_validity" value="14" />
+    </attr>
+    <attr name="mask_monetary_decimal_places" format="integer" />
+    <attr name="mask_monetary_currency" format="string" />
+    <attr name="mask_monetary_show_currency" format="boolean" />
+    <attr name="mask_monetary_locale" format="integer">
+        <enum name="portugues" value="1" />
+        <enum name="english" value="2" />
+        <enum name="french" value="3" />
+        <enum name="german" value="4" />
+        <enum name="italian" value="5" />
+        <enum name="japanese" value="6" />
+        <enum name="korean" value="7" />
+        <enum name="chinese" value="8" />
+        <enum name="simplified_chinese" value="9" />
+        <enum name="traditional_chinese" value="10" />
+        <enum name="uk" value="11" />
+        <enum name="us" value="12" />
+        <enum name="canada" value="13" />
+        <enum name="canada_french" value="14" />
+    </attr>
+    <attr name="mask_allow_pass_mask_length" format="boolean" />
+
+    <attr name="password_toggle_enabled" format="boolean" />
+
+    <!-- ========================== INFINITY STYLEABLES ======================= -->
+    <!-- INFINITY_BUTTON -->
+    <declare-styleable name="InfinityButton">
+        <attr name="bg_color" />
+        <attr name="bg_radius"  />
+        <attr name="bg_radius_top_left"  />
+        <attr name="bg_radius_top_right" />
+        <attr name="bg_radius_bottom_right" />
+        <attr name="bg_radius_bottom_left" />
+        <attr name="bg_border_color" />
+        <attr name="bg_border_width" />
+        <attr name="bg_shape_type" />
+    </declare-styleable>
+
+    <!-- INFINITY_IMAGE_BUTTON -->
+    <declare-styleable name="InfinityImageButton">
+        <attr name="bg_color" />
+        <attr name="bg_radius"  />
+        <attr name="bg_radius_top_left"  />
+        <attr name="bg_radius_top_right" />
+        <attr name="bg_radius_bottom_right" />
+        <attr name="bg_radius_bottom_left" />
+        <attr name="bg_border_color" />
+        <attr name="bg_border_width" />
+        <attr name="bg_shape_type" />
+        <attr name="src" />
+        <attr name="src_placeholder" />
+        <attr name="src_error" />
+        <attr name="src_scale_type" />
+        <attr name="src_resize_px_width" />
+        <attr name="src_resize_px_height" />
+        <attr name="src_resize_dimen_width" />
+        <attr name="src_resize_dimen_height" />
+        <attr name="src_transition_type" />
+        <attr name="src_transition_duration" />
+    </declare-styleable>
+
+    <!-- CIRCLE_IMAGE_VIEW -->
+    <declare-styleable name="CircleImageView">
+        <attr name="circle_imgv_color" format="color" />
+        <attr name="circle_imgv_border_color" format="color" />
+        <attr name="circle_imgv_border_width" format="dimension" />
+    </declare-styleable>
+
+    <!-- CIRCLE_IMAGE_BUTTON -->
+    <declare-styleable name="CircleImageButton">
+        <attr name="circle_imgbtn_color" format="color" />
+        <attr name="circle_imgbtn_border_color" format="color" />
+        <attr name="circle_imgbtn_border_width" format="integer" />
+        <attr name="circle_imgbtn_border_dash_space" format="integer" />
+        <attr name="android:padding" format="dimension" />
+    </declare-styleable>
+
+    <!-- INFINITY_IMAGE_VIEW -->
+    <declare-styleable name="InfinityImageView">
+        <attr name="blur_color" format="color"/>
+        <attr name="blur_enabled" format="boolean" />
+        <attr name="blur_type" format="integer">
+            <enum name="overlap" value="1" />
+            <enum name="defocus" value="2" />
+            <enum name="overlap_defocus" value="3" />
+        </attr>
+        <attr name="blur_radius" format="integer"/>
+        <attr name="bg_color" />
+        <attr name="bg_radius" />
+        <attr name="bg_radius_top_left" />
+        <attr name="bg_radius_top_right" />
+        <attr name="bg_radius_bottom_left" />
+        <attr name="bg_radius_bottom_right" />
+        <attr name="bg_border_color" />
+        <attr name="bg_border_width" />
+        <attr name="src" />
+        <attr name="src_placeholder" />
+        <attr name="src_error" />
+        <attr name="src_scale_type" />
+        <attr name="src_resize_px_width" />
+        <attr name="src_resize_px_height" />
+        <attr name="src_resize_dimen_width" />
+        <attr name="src_resize_dimen_height" />
+        <attr name="src_transition_type" />
+        <attr name="src_transition_duration" />
+        <attr name="src_radius" />
+        <attr name="src_radius_top_left" />
+        <attr name="src_radius_top_right" />
+        <attr name="src_radius_bottom_right" />
+        <attr name="src_radius_bottom_left" />
+    </declare-styleable>
+
+    <!-- INFINITY_EDIT_TEXT ESTILOS -->
+    <declare-styleable name="InfinityEditText">
+        <attr name="bg_color" />
+        <attr name="bg_color_focused" />
+        <attr name="bg_radius" />
+        <attr name="bg_radius_focused" />
+        <attr name="bg_radius_top_left" />
+        <attr name="bg_radius_top_left_focused" />
+        <attr name="bg_radius_top_right" />
+        <attr name="bg_radius_top_right_focused" />
+        <attr name="bg_radius_bottom_left" />
+        <attr name="bg_radius_bottom_left_focused" />
+        <attr name="bg_radius_bottom_right" />
+        <attr name="bg_radius_bottom_right_focused" />
+        <attr name="bg_border_color" />
+        <attr name="bg_border_color_focused" />
+        <attr name="bg_border_width" />
+        <attr name="bg_border_width_focused" />
+        <attr name="bg_shape_type" />
+        <attr name="mask_type" />
+        <attr name="mask_monetary_decimal_places" />
+        <attr name="mask_monetary_show_currency" />
+        <attr name="mask_monetary_locale" />
+        <attr name="mask_allow_pass_mask_length" />
+        <attr name="password_toggle_enabled" />
+    </declare-styleable>
+
+    <!-- INFINITY_TEXT_INPUT_LAYOUT ESTILOS -->
+    <declare-styleable name="InfinityTextInputLayout">
+        <!-- boxBackgroundMode override and improvements -->
+        <attr name="customBoxBackgroundMode" />
+        <attr name="customTextInputLayoutNoneStyle" />
+        <attr name="customTextInputLayoutNoneDenseStyle" />
+        <attr name="customTextInputLayoutFilledStyle" />
+        <attr name="customTextInputLayoutFilledDenseStyle" />
+        <attr name="customTextInputLayoutOutlinedStyle" />
+        <attr name="customTextInputLayoutOutlinedDenseStyle" />
+
+        <attr name="incrementCollapsedPaddingLeft" />
+        <attr name="incrementCollapsedPaddingTop" />
+        <attr name="incrementCollapsedPaddingRight" />
+
+        <attr name="bg_color" />
+        <attr name="bg_color_focused" />
+        <attr name="bg_radius" />
+        <attr name="bg_radius_focused" />
+        <attr name="bg_radius_top_left" />
+        <attr name="bg_radius_top_left_focused" />
+        <attr name="bg_radius_top_right" />
+        <attr name="bg_radius_top_right_focused" />
+        <attr name="bg_radius_bottom_left" />
+        <attr name="bg_radius_bottom_left_focused" />
+        <attr name="bg_radius_bottom_right" />
+        <attr name="bg_radius_bottom_right_focused" />
+        <attr name="bg_border_color" />
+        <attr name="bg_border_color_focused" />
+        <attr name="bg_border_width" />
+        <attr name="bg_border_width_focused" />
+        <attr name="bg_shape_type" />
+    </declare-styleable>
+
+    <!-- INFINITY_TEXT_INPUT_EDIT_TEXT ESTILOS -->
+    <declare-styleable name="InfinityTextInputEditText">
+        <attr name="bg_color" />
+        <attr name="bg_color_focused" />
+        <attr name="bg_radius" />
+        <attr name="bg_radius_focused" />
+        <attr name="bg_radius_top_left" />
+        <attr name="bg_radius_top_left_focused" />
+        <attr name="bg_radius_top_right" />
+        <attr name="bg_radius_top_right_focused" />
+        <attr name="bg_radius_bottom_left" />
+        <attr name="bg_radius_bottom_left_focused" />
+        <attr name="bg_radius_bottom_right" />
+        <attr name="bg_radius_bottom_right_focused" />
+        <attr name="bg_border_color" />
+        <attr name="bg_border_color_focused" />
+        <attr name="bg_border_width" />
+        <attr name="bg_border_width_focused" />
+        <attr name="bg_shape_type" />
+        <attr name="mask_type" />
+        <attr name="mask_monetary_decimal_places" />
+        <attr name="mask_monetary_currency" />
+        <attr name="mask_monetary_show_currency" />
+        <attr name="mask_monetary_locale" />
+        <attr name="mask_allow_pass_mask_length" />
+        <attr name="password_toggle_enabled" />
+    </declare-styleable>
+
+    <!-- INFINITY_RECYCLER_VIEW ESTILOS -->
+    <declare-styleable name="CustomRecyclerView">
+        <attr name="custom_rv_bg_color" format="color" />
+        <attr name="custom_rv_bg_radius" format="float" />
+        <attr name="custom_rv_bg_border_color" format="color" />
+        <attr name="custom_rv_bg_border_width" format="dimension" />
+    </declare-styleable>
+
+    <!-- INFINITY_SPINNER ESTILOS -->
+    <declare-styleable name="CustomSpinner">
+        <attr name="custom_spinner_bg_color" format="color" />
+        <attr name="custom_spinner_bg_radius" format="float" />
+        <attr name="custom_spinner_bg_border_color" format="color" />
+        <attr name="custom_spinner_bg_border_width" format="dimension" />
+    </declare-styleable>
+
+    <!-- INFINITY_CONSTRAINT_LAYOUT ESTILOS -->
+    <declare-styleable name="CustomConstraintLayout">
+        <attr name="custom_constlay_bg_color" format="color" />
+        <attr name="custom_constlay_bg_radius" format="float" />
+        <attr name="custom_constlay_bg_radius_top_left" format="float" />
+        <attr name="custom_constlay_bg_radius_top_right" format="float" />
+        <attr name="custom_constlay_bg_radius_bottom_left" format="float" />
+        <attr name="custom_constlay_bg_radius_bottom_right" format="float" />
+        <attr name="custom_constlay_bg_border_color" format="color" />
+        <attr name="custom_constlay_bg_border_width" format="dimension" />
+    </declare-styleable>
+
+    <!-- INFINITY_RADIO_BUTTON ESTILOS -->
+    <declare-styleable name="CustomRadioButton">
+        <attr name="custom_radbtn_bg_color" format="color" />
+        <attr name="custom_radbtn_bg_radius" format="float" />
+        <attr name="custom_radbtn_bg_border_color" format="color" />
+        <attr name="custom_radbtn_bg_border_width" format="dimension" />
+    </declare-styleable>
+
+    <!-- INFINITY_LINEAR_LAYOUT ESTILOS -->
+    <declare-styleable name="CustomLinearLayout">
+        <attr name="custom_linlay_bg_color" format="color" />
+        <attr name="custom_linlay_bg_radius" format="float" />
+        <attr name="custom_linlay_bg_radius_top_left" format="float" />
+        <attr name="custom_linlay_bg_radius_top_right" format="float" />
+        <attr name="custom_linlay_bg_radius_bottom_left" format="float" />
+        <attr name="custom_linlay_bg_radius_bottom_right" format="float" />
+        <attr name="custom_linlay_bg_border_color" format="color" />
+        <attr name="custom_linlay_bg_border_width" format="dimension" />
+        <attr name="custom_linlay_bg_border_left_width" format="dimension" />
+        <attr name="custom_linlay_bg_border_top_width" format="dimension" />
+        <attr name="custom_linlay_bg_border_right_width" format="dimension" />
+        <attr name="custom_linlay_bg_border_bottom_width" format="dimension" />
+    </declare-styleable>
+
+    <!-- INFINITY_TEXT_VIEW ESTILOS -->
+    <declare-styleable name="CustomTextView">
+        <attr name="custom_text_view_bg_color" format="color" />
+        <attr name="custom_text_view_bg_radius" format="float" />
+        <attr name="custom_text_view_bg_radius_top_left" format="float" />
+        <attr name="custom_text_view_bg_radius_top_right" format="float" />
+        <attr name="custom_text_view_bg_radius_bottom_left" format="float" />
+        <attr name="custom_text_view_bg_radius_bottom_right" format="float" />
+        <attr name="custom_text_view_bg_border_color" format="color" />
+        <attr name="custom_text_view_bg_border_width" format="dimension" />
+    </declare-styleable>
+
+    <!-- INFINITY_TEXT_INPUT_LAY_PICKER -->
+    <declare-styleable name="CustomTextInputLayPicker">
+        <attr name="hint" format="string" />
+        <attr name="hint_color" format="color" />
+        <attr name="text_color" format="color" />
+        <attr name="text_size" format="dimension" />
+        <attr name="drawable_padding" format="dimension" />
+        <attr name="date_picker_theme" format="reference" />
+        <attr name="time_picker_theme" format="reference" />
+        <attr name="picker_type" format="integer">
+            <enum name="date" value="1" />
+            <enum name="time" value="2" />
+            <enum name="date_time" value="3" />
+        </attr>
+        <attr name="edit_text_bg" format="reference|color" />
+    </declare-styleable>
+
+    <!-- INFINITY_MENU STYLES -->
+    <!-- Base attributes that are available to all Item objects. -->
+
+    <!-- OVERRIDE STYLES -->
+</resources>

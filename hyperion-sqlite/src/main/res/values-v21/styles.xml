@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TEMA BASE DO APP + SEM ACTION BAR + STATUS BAR TRANSPARENTE -->
+    <style name="HsqlAppTheme.NoActionBar">
+        <!-- ADICIONA CORES DO TEMA -->
+        <item name="colorPrimary">@color/hsql_primary</item>
+        <item name="colorPrimaryDark">@color/hsql_primary_dark</item>
+        <item name="colorAccent">@color/hsql_accent</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/hsql_primary_dark</item>
+    </style>
+
+</resources>

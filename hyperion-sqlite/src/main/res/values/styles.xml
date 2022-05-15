@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TEMA BASE DO APP -->
+    <style name="HsqlAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- ADICIONA CORES DO TEMA -->
+        <item name="colorPrimary">@color/hsql_primary</item>
+        <item name="colorPrimaryDark">@color/hsql_primary_dark</item>
+        <item name="colorAccent">@color/hsql_accent</item>
+    </style>
+
+    <!-- TEMA BASE DO APP + SEM ACTION BAR -->
+    <style name="HsqlAppTheme.NoActionBar">
+        <!-- REMOVE BARRA DE ACOES E O TITULO -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- OVERLAY -->
+    <style name="HsqlAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="HsqlAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

@@ -1,0 +1,136 @@
+apply plugin: 'com.android.application'
+// Apply HILT Plugin - Is the only one supported for now
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdk project.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.infinity.architecture.sampleapp"
+        minSdk project.minSdkVersion
+        targetSdk project.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        // Enable Multidex
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // Add BuildFeatures and enable dataBinding
+    buildFeatures {
+        // for data binding:
+        // - includes the viewBinding features and generate classes, but increase the build time
+        dataBinding = true
+
+        // for view binding:
+        // - includes only the findViewById abstraction and is more light than dataBinding
+        // viewBinding = true
+    }
+}
+
+dependencies {
+    // Local libraries - If Exists should be placed inside libs folder
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Instrumented and Unity test
+    testImplementation "junit:junit:$project.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$project.androidxTestExtJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$project.androidxTestEspressoCoreVersion"
+
+    // Base Architecture Libs
+    implementation project(":lib-architecture-base")
+    implementation project(":lib-architecture-utils")
+    implementation project(":lib-architecture-views")
+
+    // AppCompat Activity, Fragments, Etc...
+    implementation "androidx.appcompat:appcompat:$project.androidxAppcompatVersion"
+    // Material widgets
+    implementation "com.google.android.material:material:$project.androidMaterialVersion"
+    // Constraint Layout
+    implementation "androidx.constraintlayout:constraintlayout:$project.androidxConstraintLayoutVersion"
+    // Recycler View
+    implementation "androidx.recyclerview:recyclerview:$project.androidxRecyclerViewVersion"
+
+    // Jetpack - Navigation graph
+    implementation "androidx.navigation:navigation-runtime:$project.androidxNavigationRuntimeVersion"
+    implementation "androidx.navigation:navigation-fragment:$project.androidxNavigationFragmentVersion"
+    implementation "androidx.navigation:navigation-ui:$project.androidxNavigationUiVersion"
+
+    // Jetpack - MVVM - Architecture
+    // Lifecycle - ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$project.androidxLifecycleViewModelVersion"
+    // Lifecycle - LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata:$project.androidxLifecycleLivedataVersion"
+    // Lifecycle - Lifecycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime:$project.androidxLifecycleRuntimeVersion"
+    // Lifecycle - Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$project.androidxLifecycleViewModelSavedStateVersion"
+    // Annotation processor
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$project.androidxLifecycleCompilerVersion"
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    // implementation "androidx.lifecycle:lifecycle-common-java8:2.3.1"
+
+    // Multidex Create separated class loaders as dex to fit (methods/fields) amount greather than 65536
+    implementation "androidx.multidex:multidex:$project.multidexVersion"
+
+    // Add Hilt implementation
+    // Hilt - Dependency injection
+    implementation "com.google.dagger:hilt-android:$project.daggerHiltAndroidVersion"
+    annotationProcessor "com.google.dagger:hilt-compiler:$project.daggerHiltCompilerVersion"
+
+    // Hilt - Instrumentation tests
+    androidTestImplementation  "com.google.dagger:hilt-android-testing:$project.daggerHiltAndroidTestingVersion"
+    androidTestAnnotationProcessor "com.google.dagger:hilt-compiler:$project.daggerHiltCompilerTestingVersion"
+
+    // Hilt - Local unit tests
+    testImplementation "com.google.dagger:hilt-android-testing:$project.daggerHiltAndroidTestingVersion"
+    testAnnotationProcessor "com.google.dagger:hilt-compiler:$project.daggerHiltCompilerTestingVersion"
+
+    // Jetpack - Room Database
+    implementation "androidx.room:room-runtime:$project.androidxRoomRuntimeVersion"
+    annotationProcessor "androidx.room:room-compiler:$project.androidxRoomCompilerVersion"
+    // Room - optional - RxJava2 support for Room
+    implementation "androidx.room:room-rxjava2:$project.androidxRoomRxJava2Version"
+    // Room - optional - RxJava3 support for Room
+    implementation "androidx.room:room-rxjava3:$project.androidxRoomRxJava3Version"
+    // Room - optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$project.androidxRoomGuavaVersion"
+    // Room - optional - Test helpers
+    testImplementation "androidx.room:room-testing:$project.androidxRoomTestingVersion"
+
+    // RxJava - reactive, composite disposable, observables
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxJava2RxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxJava2RxAndroidVersion"
+
+    // DEBUG - Hyperion
+    debugImplementation project(':hyperion-core')
+    releaseImplementation project(':hyperion-core-no-op')
+    debugImplementation project(':hyperion-attr')
+    debugImplementation project(':hyperion-attr-appcompat-v7')
+    debugImplementation project(':hyperion-attr-support-v4')
+    debugImplementation project(':hyperion-attr-recyclerview')
+    debugImplementation project(':hyperion-attr-design')
+    debugImplementation project(':hyperion-measurement')
+    debugImplementation project(':hyperion-recorder')
+    debugImplementation project(':hyperion-disk')
+    debugImplementation project(':hyperion-phoenix')
+    debugImplementation project(':hyperion-crash')
+    debugImplementation project(':hyperion-shared-preferences')
+    debugImplementation project(':hyperion-geiger-counter')
+    debugImplementation project(':hyperion-sqlite')
+    debugImplementation project(':hyperion-build-config')
+    debugImplementation project(':hyperion-timber')
+    debugImplementation project(':hyperion-timber-extension-lint')
+    debugImplementation project(':hyperion-chuck')
+}

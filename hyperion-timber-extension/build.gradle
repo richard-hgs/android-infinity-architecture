@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+/*apply plugin: 'checkstyle'
+
+task checkstyle(type: Checkstyle) {
+  configFile rootProject.file('checkstyle.xml')
+  source 'src/main/java'
+  ignoreFailures false
+  showViolations true
+  include '** /*.java'
+
+  classpath = files()
+}
+
+afterEvaluate {
+  if (project.tasks.findByName('check')) {
+    check.dependsOn('checkstyle')
+  }
+}*/
+
+android {
+  compileSdkVersion project.compileSdkVersion
+
+  defaultConfig {
+    minSdkVersion project.minSdkVersion
+    consumerProguardFiles 'consumer-proguard-rules.pro'
+  }
+
+  lintOptions {
+    textReport true
+    textOutput 'stdout'
+  }
+
+  // TODO replace with https://issuetracker.google.com/issues/72050365 once released.
+  libraryVariants.all {
+    it.generateBuildConfigProvider.configure {
+      it.enabled = false
+    }
+  }
+}
+
+dependencies {
+  implementation "org.jetbrains:annotations:$project.jetbrainsAnnotationsVersion"
+
+  testImplementation "org.jetbrains:annotations:$project.jetbrainsAnnotationsVersion"
+  testImplementation "junit:junit:$project.junitVersion"
+  testImplementation "com.google.truth:truth:$project.googleTruthVersion"
+  testImplementation "org.robolectric:robolectric:$project.roboletricVersion"
+
+  testImplementation "com.android.tools.build:gradle:$project.androidxPluginVersion"
+
+  lintChecks project(':hyperion-timber-extension-lint')
+}
+
+// apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

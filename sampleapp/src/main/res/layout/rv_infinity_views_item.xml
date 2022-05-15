@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The view for the recycler adapter -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.infinity.architecture.sampleapp.ui.adapters.RvAdptInfinityViewsVm" />
+    </data>
+    <com.infinity.architecture.views.InfinityButton
+        android:id="@+id/btn_view"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="button"
+        android:textAllCaps="false"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textSize="14sp"/>
+</layout>

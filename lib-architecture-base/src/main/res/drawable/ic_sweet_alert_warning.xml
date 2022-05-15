@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_sweet_alert_warning_circle" android:height="52dp" android:width="52dp"/>
+    <item android:drawable="@drawable/ic_sweet_alert_warning_sigh"
+        android:left="24dp"
+        android:top="8dp"
+        android:bottom="16dp"
+        android:width="4dp" />
+</layer-list>

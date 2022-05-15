@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.infinity.architecture.sampleapp.ui.screens.fragments.custom_views.FragmentCvInfinityButtonVm" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_1"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}"
+                app:throttleTimeMillis="@{2000}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_2"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_3"
+                app:bg_color="#CD0101"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_4"
+                android:textColor="@color/black"
+                app:bg_color="#FFF200"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_5"
+                app:bg_radius_top_left="60"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_6"
+                app:bg_radius="60"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_7"
+                android:textColor="@color/lightPrimaryColorDark"
+                app:bg_border_color="@color/lightPrimaryColorDark"
+                app:bg_border_width="2dp"
+                app:bg_color="#FEFEFE"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_8"
+                android:textColor="@color/lightPrimaryColorDark"
+                app:bg_border_color="#CD0101"
+                app:bg_border_width="2dp"
+                app:bg_color="#FEFEFE"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_9"
+                android:textColor="@color/lightPrimaryColorDark"
+                app:bg_border_color="@color/lightPrimaryColorDark"
+                app:bg_border_width="2dp"
+                app:bg_color="#FEFEFE"
+                app:bg_radius_top_left="60"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_10"
+                android:textColor="@color/lightPrimaryColorDark"
+                app:bg_border_color="@color/lightPrimaryColorDark"
+                app:bg_border_width="2dp"
+                app:bg_color="#FEFEFE"
+                app:bg_radius="60"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_11"
+                android:textColor="@color/white"
+                app:bg_border_color="#FF0000"
+                app:bg_border_width="2dp"
+                app:bg_color="#0097DC"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableTop="@drawable/ic_baseline_image_light_60"
+                android:padding="8dp"
+                android:text="@string/btn_desc_12"
+                android:textColor="@color/white"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_baseline_image_light_60"
+                android:padding="8dp"
+                android:text="@string/btn_desc_13"
+                android:textColor="@color/white"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="32dp"
+                android:text="@string/btn_desc_14"
+                android:textColor="@color/white"
+                app:bg_shape_type="oval"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityButton
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/btn_desc_15"
+                android:textColor="@color/white"
+                app:bg_shape_type="oval"
+                app:throttleClickListener="@{viewModel::onBtnClick}"
+                app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

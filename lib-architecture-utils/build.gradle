@@ -1,0 +1,81 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion project.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        // for data binding:
+        // - includes the viewBinding features and generate classes, but increase the build time
+        dataBinding = true
+
+        // for view binding:
+        // - includes only the findViewById abstraction and is more light
+        // viewBinding = true
+    }
+}
+
+dependencies {
+    // Bibliotecas locais
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation "androidx.appcompat:appcompat:$project.androidxAppcompatVersion"
+    implementation "androidx.navigation:navigation-common:$project.androidxNavigationCommonVersion"
+    implementation "androidx.customview:customview:$project.androidxCustomViewVersion"
+    implementation "androidx.navigation:navigation-runtime:$project.androidxNavigationRuntimeVersion"
+    implementation "androidx.navigation:navigation-ui:$project.androidxNavigationUiVersion"
+    implementation "androidx.drawerlayout:drawerlayout:$project.androidxDrawerlayoutVersion"
+    // implementation "androidx.navigation:navigation-fragment:2.3.5"
+    implementation "com.google.android.material:material:$project.androidMaterialVersion"
+    testImplementation "junit:junit:$project.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$project.androidxTestExtJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$project.androidxTestEspressoCoreVersion"
+
+//    implementation("com.google.zxing:core:3.2.1") {
+//        exclude module: "support-v4"
+//    }
+
+    // RxJava reactive, composite disposable
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxJava2RxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxJava2RxAndroidVersion"
+
+    // QrCode And Barcode
+    implementation "com.google.zxing:core:3.2.1"
+    implementation "com.journeyapps:zxing-android-embedded:$project.journeyappsZxingAndroidEmbbedVersion"
+
+    // Gson Serialization
+    implementation "com.google.code.gson:gson:$project.googleCodeGsonVersion"
+
+    // org.json toXML and fromXML
+    implementation project(":lib-org-json")
+
+    // Requests - OkHttp requests
+    // define any required OkHttp artifacts without version
+    implementation "com.squareup.okhttp3:okhttp:$project.squareupOkHttp3Version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$project.squareupOkHttp3LoggingInterceptorVersion"
+
+    // Rx2AndroidNetworking - Easy api requests
+    implementation "com.amitshekhar.android:rx2-android-networking:$project.amitshekharRx2AndroidNetworkingVersion"
+
+    // Conscrypt Add support to TLS V_1.3
+    implementation "org.conscrypt:conscrypt-android:$project.orgConscryptAndroidVersion"
+}

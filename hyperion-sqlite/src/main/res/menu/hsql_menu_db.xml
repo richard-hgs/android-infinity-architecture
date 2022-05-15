@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/hsql_menu_db_info"
+        android:title="Detalhes">
+    </item>
+
+    <item android:id="@+id/hsql_menu_db_sql"
+        android:title="Sql banco">
+    </item>
+
+    <item android:id="@+id/hsql_menu_db_apagar"
+        android:title="Apagar">
+    </item>
+</menu>

@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+
+group = project.hyperionLibraryGroup
+version = project.hyperionLibraryVersion
+
+android {
+    compileSdkVersion project.compileSdkVersion
+    // buildToolsVersion project.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode hyperionBuildVersionCode()
+        versionName version
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    resourcePrefix 'hsql_'
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api project(':hyperion-plugin')
+    implementation "androidx.appcompat:appcompat:$project.androidxAppcompatVersion"
+    annotationProcessor "com.google.auto.service:auto-service:$project.googleAutoServiceVersion"
+    implementation "androidx.recyclerview:recyclerview:$project.androidxRecyclerViewVersion"
+    implementation "com.google.android.material:material:$project.androidMaterialVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$project.androidxLifecycleExtensionsVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$project.androidxLifecycleViewModelVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxJava2RxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxJava2RxJavaVersion"
+    testImplementation "junit:junit:$project.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$project.androidxTestExtJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$project.androidxTestEspressoCoreVersion"
+}

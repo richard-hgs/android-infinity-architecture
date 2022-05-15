@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.infinity.architecture.base.ui.dialog.SimpleDialogReceivePictureViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ONDE BUSCAR A FOTO?"
+            android:gravity="center_horizontal"
+            android:background="#265EBF"
+            android:textColor="@android:color/white"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.infinity.architecture.views.InfinityButton
+            android:id="@+id/infinityButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_baseline_photo_camera_24"
+            android:drawablePadding="4dp"
+            android:paddingStart="32dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="32dp"
+            android:paddingBottom="16dp"
+            android:layout_marginTop="32dp"
+            android:text="Câmera"
+            android:textColor="@android:color/white"
+            app:throttleClickListener="@{viewModel::onBtnTakePictureClick}"
+            app:throttleEventListener="@{viewModel::onBtnThrottling}"
+            app:color="#1BB300"
+            app:layout_constraintEnd_toStartOf="@+id/coloredButton2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <com.infinity.architecture.views.InfinityButton
+            android:id="@+id/coloredButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_baseline_image_24"
+            android:drawablePadding="4dp"
+            android:paddingStart="32dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="32dp"
+            android:paddingBottom="16dp"
+            android:text="Galeria"
+            android:textColor="@android:color/white"
+            app:throttleClickListener="@{viewModel::onBtnPickPictureClick}"
+            app:throttleEventListener="@{viewModel::onBtnThrottling}"
+            app:color="#FFAA00"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/infinityButton"
+            app:layout_constraintTop_toTopOf="@+id/infinityButton" />
+
+        <com.infinity.architecture.views.InfinityButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Voltar"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            app:throttleClickListener="@{viewModel::onBtnBackClick}"
+            app:throttleEventListener="@{viewModel::onBtnThrottling}"
+            app:color="#FF0000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coloredButton2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

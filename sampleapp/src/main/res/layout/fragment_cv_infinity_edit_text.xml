@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.infinity.architecture.sampleapp.ui.screens.fragments.custom_views.FragmentCvInfinityEditTextVm" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <com.infinity.architecture.views.InfinityEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edittxt_desc_1"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_2"
+                android:inputType="number"
+                android:minHeight="48dp"
+                app:mask_type="monetary" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_3"
+                android:inputType="number"
+                android:minHeight="48dp"
+                app:mask_type="cellphone_1" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_4"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBorderWidthFocused"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_5"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBorderColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_6"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBorderColorFocused"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_7"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBorderRadius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_8"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBorderRadiusFocused"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_9"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomCornerBorderRadius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_10"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomCornerBorderRadiusFocused"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_11"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBackgroundColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_12"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBackgroundColorFocused"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_13"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBackgroundColorRadius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_14"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBackgroundColorRadiusFocused"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_15"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBackgroundColorCornersRadius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_16"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                style="@style/InfinityEditTextCustomBackgroundColorCornersRadiusFocused"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/edittxt_desc_17"
+                android:minHeight="48dp" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableStart="@drawable/ic_baseline_lock_24"
+                android:drawablePadding="8dp"
+                android:hint="@string/edittxt_desc_18"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                app:password_toggle_enabled="true" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawablePadding="8dp"
+                android:hint="@string/edittxt_desc_19"
+                android:minHeight="48dp"
+                app:dlThrottleClickListener="@{viewModel::onDrawableLeftClick}"
+                app:dlThrottleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableRight="@drawable/ic_baseline_email_24"
+                android:drawablePadding="8dp"
+                android:hint="@string/edittxt_desc_20"
+                android:minHeight="48dp"
+                app:drThrottleClickListener="@{viewModel::onDrawableRightClick}"
+                app:drThrottleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableStart="@drawable/ic_baseline_email_24"
+                android:drawablePadding="8dp"
+                android:hint="@string/edittxt_desc_21"
+                android:minHeight="48dp"
+                app:dlThrottleClickListener="@{viewModel::onDrawableLeftClick}"
+                app:dlThrottleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableEnd="@drawable/ic_baseline_email_24"
+                android:drawablePadding="8dp"
+                android:hint="@string/edittxt_desc_22"
+                android:minHeight="48dp"
+                app:drThrottleClickListener="@{viewModel::onDrawableRightClick}"
+                app:drThrottleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableTop="@drawable/ic_baseline_email_24"
+                android:drawablePadding="8dp"
+                android:hint="@string/edittxt_desc_23"
+                android:minHeight="48dp"
+                app:dtThrottleClickListener="@{viewModel::onDrawableTopClick}"
+                app:dtThrottleEventListener="@{viewModel::onBtnThrottling}" />
+
+            <com.infinity.architecture.views.InfinityEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableBottom="@drawable/ic_baseline_email_24"
+                android:drawablePadding="8dp"
+                android:hint="@string/edittxt_desc_24"
+                android:minHeight="48dp"
+                app:dbThrottleClickListener="@{viewModel::onDrawableBottomClick}"
+                app:dbThrottleEventListener="@{viewModel::onBtnThrottling}" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

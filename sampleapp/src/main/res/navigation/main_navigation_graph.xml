@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation_graph"
+    app:startDestination="@id/fragment_home">
+
+    <fragment
+        android:id="@+id/fragment_home"
+        android:label="fragment_home"
+        android:name="com.infinity.architecture.sampleapp.ui.screens.fragments.FragmentHome"
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_custom_views"
+            app:destination="@id/fragment_custom_views" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_custom_views"
+        android:label="fragment_custom_views"
+        android:name="com.infinity.architecture.sampleapp.ui.screens.fragments.FragmentInfinityViews"
+        tools:layout="@layout/fragment_infinity_views" >
+        <action
+            android:id="@+id/action_fragment_custom_views_to_fragment_cv_custom_button"
+            app:destination="@id/fragment_cv_custom_button" />
+        <action
+            android:id="@+id/action_fragment_custom_views_to_fragment_cv_custom_image_button"
+            app:destination="@id/fragment_cv_custom_image_button" />
+        <action
+            android:id="@+id/action_fragment_custom_views_to_fragment_cv_custom_image_view"
+            app:destination="@id/fragment_cv_custom_image_view" />
+        <action
+            android:id="@+id/action_fragment_custom_views_to_fragment_cv_custom_edit_text"
+            app:destination="@id/fragment_cv_custom_edit_text" />
+        <action
+            android:id="@+id/action_fragment_custom_views_to_fragment_cv_custom_text_input_edit_text"
+            app:destination="@id/fragment_cv_custom_text_input_edit_text" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_cv_custom_button"
+        android:label="fragment_cv_custom_button"
+        android:name="com.infinity.architecture.sampleapp.ui.screens.fragments.custom_views.FragmentCvInfinityButton"
+        tools:layout="@layout/fragment_cv_infinity_button" />
+
+    <fragment
+        android:id="@+id/fragment_cv_custom_image_button"
+        android:label="fragment_cv_custom_image_button"
+        android:name="com.infinity.architecture.sampleapp.ui.screens.fragments.custom_views.FragmentCvInfinityImageButton"
+        tools:layout="@layout/fragment_cv_infinity_image_button" />
+
+    <fragment
+        android:id="@+id/fragment_cv_custom_image_view"
+        android:label="fragment_cv_custom_image_view"
+        android:name="com.infinity.architecture.sampleapp.ui.screens.fragments.custom_views.FragmentCvInfinityImageView"
+        tools:layout="@layout/fragment_cv_infinity_image_view" />
+
+    <fragment
+        android:id="@+id/fragment_cv_custom_edit_text"
+        android:label="fragment_cv_custom_edit_text"
+        android:name="com.infinity.architecture.sampleapp.ui.screens.fragments.custom_views.FragmentCvInfinityEditText"
+        tools:layout="@layout/fragment_cv_infinity_edit_text" />
+
+    <fragment
+        android:id="@+id/fragment_cv_custom_text_input_edit_text"
+        android:label="fragment_cv_custom_text_input_edit_text"
+        android:name="com.infinity.architecture.sampleapp.ui.screens.fragments.custom_views.FragmentCvInfinityTextInputEditText"
+        tools:layout="@layout/fragment_cv_infinity_text_input_edit_text" />
+</navigation>

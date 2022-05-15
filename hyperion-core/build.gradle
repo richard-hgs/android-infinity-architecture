@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+// apply from: '../publish.gradle'
+
+group = project.hyperionLibraryGroup
+version = project.hyperionLibraryVersion
+
+android {
+    compileSdkVersion project.compileSdkVersion
+    // buildToolsVersion project.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode hyperionBuildVersionCode()
+        versionName version
+        consumerProguardFiles 'consumer-proguard-rules.pro'
+
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "versionName", "\"${version}\""
+        }
+        release {
+            buildConfigField "String", "versionName", "\"${version}\""
+        }
+    }
+
+    resourcePrefix 'hype_'
+}
+
+dependencies {
+    implementation(project(':hyperion-plugin')) {
+        transitive = true
+    }
+    implementation "androidx.appcompat:appcompat:$project.androidxAppcompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$project.androidxConstraintLayoutVersion"
+    implementation "androidx.recyclerview:recyclerview:$project.androidxRecyclerViewVersion"
+    implementation "com.google.dagger:dagger:$project.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerCompilerVersion"
+}

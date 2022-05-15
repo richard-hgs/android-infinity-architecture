@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion project.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        // for data binding:
+        // - includes the viewBinding features and generate classes, but increase the build time
+        dataBinding = true
+
+        // for view binding:
+        // - includes only the findViewById abstraction and is more light
+        // viewBinding = true
+    }
+}
+
+dependencies {
+
+    implementation "androidx.appcompat:appcompat:$project.androidxAppcompatVersion"
+    implementation "com.google.android.material:material:$project.androidMaterialVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$project.androidxSwipeRefreshLayoutVersion"
+    implementation "androidx.navigation:navigation-fragment:$project.androidxNavigationFragmentVersion"
+    testImplementation "junit:junit:$project.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$project.androidxTestExtJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$project.androidxTestEspressoCoreVersion"
+
+    // RxJava reactive, composite disposable
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxJava2RxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxJava2RxAndroidVersion"
+
+    // Image library
+    implementation "com.squareup.picasso:picasso:$project.squareupPicassoVersion"
+    implementation "jp.wasabeef:picasso-transformations:$project.jpWasabefPicassoTransformationVersion"
+
+    implementation "com.github.bumptech.glide:glide:$project.bumptechGlideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$project.bumptechGlideCompilerVersion"
+
+    implementation project(":lib-architecture-utils")
+    implementation project(":lib-renderscript-toolkit")
+}

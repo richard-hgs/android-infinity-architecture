@@ -1,0 +1,155 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    // project.vars
+    ext {
+        // BUILD | COMPILE - Versions
+        compileSdkVersion                               = 31
+        targetSdkVersion                                = 30
+        minSdkVersion                                   = 19
+        buildToolsVersion                               = '30.0.0'
+
+        // HYPERION - Config
+        hyperionLibraryGroup                            = 'com.willowtreeapps.hyperion'
+        hyperionLibraryVersion                          = '0.9.26'
+
+        // LIBS - Kotlin
+        kotlinVersion                                   = '1.5.21'      // org.jetbrains.kotlin:kotlin-gradle-plugin:0.0.0, org.jetbrains.kotlin:kotlin-stdlib:0.0.0
+
+        // LIBS - Androidx
+        //   - Tools
+        androidxToolsVersion                            = '26.1.1'      // com.android.tools.lint:lint-api:0.0.0 | com.android.tools.lint:lint-checks:0.0.0 | com.android.tools.lint:lint:0.0.0 | com.android.tools.lint:lint-tests:0.0.0
+        //   - Plugins
+        androidxPluginVersion                           = '3.1.1'       // com.android.tools.build:gradle:0.0.0
+        //   - Kotlin
+        androidxCoreKtxVersion                          = '1.6.0'       // androidx.core:core-ktx:1.6.0
+        //   - Annotations
+        androidxAnnotationVersion                       = '1.1.0'       // androidx.annotation:annotation:0.0.0
+        //   - Layout
+        androidxAppcompatVersion                        = '1.4.1'       // androidx.appcompat:appcompat:0.0.0
+        androidxConstraintLayoutVersion                 = '2.1.3'       // androidx.constraintlayout:constraintlayout:0.0.0
+        androidxRecyclerViewVersion                     = '1.2.1'       // androidx.recyclerview:recyclerview:0.0.0
+        androidxLegacySupportV4Version                  = '1.0.0'       // androidx.legacy:legacy-support-v4:0.0.0
+        androidxSwipeRefreshLayoutVersion               = '1.1.0'       // androidx.swiperefreshlayout:swiperefreshlayout:0.0.0
+        androidxCustomViewVersion                       = '1.1.0'       // androidx.customview:customview:0.0.0
+        androidxDrawerlayoutVersion                     = '1.1.1'       // androidx.drawerlayout:drawerlayout:0.0.0
+        androidxSlidingPaneLayoutVersion                = '1.0.0'       // androidx.slidingpanelayout:slidingpanelayout:0.0.0
+        androidxSwipeRefreshLayoutVersion               = '1.1.0'       // androidx.swiperefreshlayout:swiperefreshlayout:0.0.0
+        //   - Navigation
+        androidxNavigationRuntimeVersion                = '2.3.5'       // androidx.navigation:navigation-runtime:0.0.0
+        androidxNavigationFragmentVersion               = '2.3.5'       // androidx.navigation:navigation-fragment:0.0.0
+        androidxNavigationUiVersion                     = '2.3.5'       // androidx.navigation:navigation-ui:0.0.0
+        androidxNavigationCommonVersion                 = '2.3.5'       // androidx.navigation:navigation-common:0.0.0
+        //   - Jetpack - MVVM - Lifecycle
+        androidxLifecycleViewModelVersion               = '2.3.1'       // androidx.lifecycle:lifecycle-viewmodel:0.0.0
+        androidxLifecycleLivedataVersion                = '2.3.1'       // androidx.lifecycle:lifecycle-livedata:0.0.0
+        androidxLifecycleRuntimeVersion                 = '2.3.1'       // androidx.lifecycle:lifecycle-runtime:0.0.0
+        androidxLifecycleViewModelSavedStateVersion     = '2.3.1'       // androidx.lifecycle:lifecycle-viewmodel-savedstate:0.0.0
+        androidxLifecycleCompilerVersion                = '2.3.1'       // androidx.lifecycle:lifecycle-compiler:0.0.0
+        androidxLifecycleExtensionsVersion              = '2.0.0'       // androidx.lifecycle:lifecycle-extensions:0.0.0
+        //   - Jetpack - ROOM
+        androidxRoomRuntimeVersion                      = '2.3.0'       // androidx.room:room-runtime:0.0.0
+        androidxRoomCompilerVersion                     = '2.3.0'       // androidx.room:room-compiler:0.0.0
+        androidxRoomRxJava2Version                      = '2.3.0'       // androidx.room:room-rxjava2:0.0.0
+        androidxRoomRxJava3Version                      = '2.3.0'       // androidx.room:room-rxjava3:0.0.0
+        androidxRoomGuavaVersion                        = '2.3.0'       // androidx.room:room-guava:0.0.0
+        androidxRoomTestingVersion                      = '2.3.0'       // androidx.room:room-testing:0.0.0
+
+        // LIBS - Android Material
+        androidMaterialVersion                          = '1.5.0'       // com.google.android.material:material:0.0.0
+
+        // LIBS - Layout Mixed (Toast, Alert, ImageCrop, Sdp)
+        //    - Toasty
+        gRenderGtoastyVersion                           = '1.3.0'       // com.github.GrenderG:Toasty:0.0.0
+        //    - SweetAlert
+        f0risSweetAlertLibraryVersion                   = '1.6.2'       // com.github.f0ris.sweetalert:library:0.0.0
+        //    - YalantisUcrop
+        yalantisUcropVersion                            = '2.2.7'       // com.github.yalantis:ucrop:0.0.0
+        //    - SDP
+        intuitSdpAndroidVersion                         = '1.0.5'       // com.intuit.sdp:sdp-android:0.0.0
+        //    - Picasso
+        squareupPicassoVersion                          = '2.71828'     // com.squareup.picasso:picasso:0.0.0
+        //    - Picasso Transformations
+        jpWasabefPicassoTransformationVersion           = '2.2.1'       // jp.wasabeef:picasso-transformations:0.0.0
+        //    - Glide
+        bumptechGlideVersion                            = '4.12.0'      // com.github.bumptech.glide:glide:0.0.0
+        bumptechGlideCompilerVersion                    = '4.12.0'      // com.github.bumptech.glide:compiler:0.0.0
+
+        // LIBS - Multidex
+        multidexVersion                                 = '2.0.0'       // androidx.multidex:multidex:0.0.0
+
+        // LIBS - Dependency Injection
+        daggerHiltAndroidVersion                        = '2.40.1'      // com.google.dagger:hilt-android:0.0.0
+        daggerHiltCompilerVersion                       = '2.40.1'      // com.google.dagger:hilt-compiler:0.0.0
+        daggerHiltAndroidTestingVersion                 = '2.40.1'      // com.google.dagger:hilt-android-testing:0.0.0
+        daggerHiltCompilerTestingVersion                = '2.40.1'      // com.google.dagger:hilt-compiler:0.0.0
+        daggerVersion                                   = '2.15'        // com.google.dagger:dagger:0.0.0
+        daggerCompilerVersion                           = '2.15'        // com.google.dagger:dagger-compiler:0.0.0
+
+        // LIBS - RxJava
+        rxJava2RxJavaVersion                            = '2.2.18'      // io.reactivex.rxjava2:rxjava:0.0.0
+        rxJava2RxAndroidVersion                         = '2.1.1'       // io.reactivex.rxjava2:rxandroid:0.0.0
+
+        // LIBS - Api | Gson
+        squareupOkHttp3Version                          = '4.9.0'       // com.squareup.okhttp3:okhttp:0.0.0
+        squareupOkHttp3LoggingInterceptorVersion        = '4.9.0'       // com.squareup.okhttp3:logging-interceptor:0.0.0
+        amitshekharRx2AndroidNetworkingVersion          = '1.0.2'       // com.amitshekhar.android:rx2-android-networking:0.0.0
+        googleCodeGsonVersion                           = '2.8.6'       // com.google.code.gson:gson:0.0.0
+        readystatesoftwareChuckVersion                  = '1.1.0'       // com.readystatesoftware.chuck:library:0.0.0
+
+        // LIBS - Barcode
+        googleZxingCoreVersion                          = '3.2.1'       // com.google.zxing:core:0.0.0
+        journeyappsZxingAndroidEmbbedVersion            = '3.2.0@aar'   // com.journeyapps:zxing-android-embedded:3.2.0@aar
+
+        // LIBS - Security | Cryptography
+        orgConscryptAndroidVersion                      = '2.5.2'       // org.conscrypt:conscrypt-android:0.0.0
+
+        // LIBS - Annotation processor
+        googleAutoServiceVersion                        = '1.0-rc4'     // com.google.auto.service:auto-service:0.0.0
+        jetbrainsAnnotationsVersion                     = '16.0.1'      // org.jetbrains:annotations:0.0.0
+
+        // LIBS - Debug | Log
+        jakewhartonTimberVersion                        = '4.7.0'       // com.jakewharton.timber:timber:0.0.0
+
+        // LIBS - Assertions
+        googleTruthVersion                              = '0.40'        // com.google.truth:truth:0.0.0
+
+        // LIBS - Tests | Unit tests | Expresso tests
+        //    - Androidx
+        junitVersion                                    = '4.13.2'      // junit:junit:0.0.0
+        androidxTestExtJunitVersion                     = '1.1.3'       // androidx.test.ext:junit:0.0.0
+        androidxTestEspressoCoreVersion                 = '3.4.0'       // androidx.test.espresso:espresso-core:0.0.0
+        //    - Roboletric
+        roboletricVersion                               = '4.2.1'       // org.robolectric:robolectric:0.0.0
+
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        // Gradle
+        classpath 'com.android.tools.build:gradle:7.1.3'
+        // Kotlin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        // Hilt
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.41'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+// HYPERION - Build version code
+Integer hyperionBuildVersionCode() {
+    if (project.hasProperty("versionCode")) {
+        return project.properties.versionCode.toInteger()
+    } else {
+        return 9999
+    }
+}

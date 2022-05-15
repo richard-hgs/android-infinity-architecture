@@ -1,0 +1,43 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        maven { url "https://jitpack.io" }
+    }
+}
+rootProject.name = "ArchitectureProject"
+// Sample app
+include ':sampleapp'
+// LIBS - Architecture
+include ':lib-architecture-base'
+include ':lib-architecture-views'
+include ':lib-architecture-utils'
+// LIBS - GSON Google
+include ':lib-org-json'
+// LIBS - Rendescript images
+include ':lib-renderscript-toolkit'
+// LIBS - Debug Hyperion
+include ':hyperion-attr'
+include ':hyperion-attr-appcompat-v7'
+include ':hyperion-attr-design'
+include ':hyperion-attr-recyclerview'
+include ':hyperion-attr-support-v4'
+include ':hyperion-build-config'
+include ':hyperion-chuck'
+include ':hyperion-core'
+include ':hyperion-core-no-op'
+include ':hyperion-crash'
+include ':hyperion-disk'
+include ':hyperion-geiger-counter'
+include ':hyperion-location'
+include ':hyperion-measurement'
+include ':hyperion-phoenix'
+include ':hyperion-plugin'
+include ':hyperion-recorder'
+include ':hyperion-shared-preferences'
+include ':hyperion-sqlite'
+include ':hyperion-timber'
+include ':hyperion-timber-extension'
+include ':hyperion-timber-extension-lint'

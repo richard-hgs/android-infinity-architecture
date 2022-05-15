@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- CORES PRIMARIAS DO APLICATIVO -->
+    <color name="hsql_primary">#2196F3</color>
+    <color name="hsql_primary_dark">#1976D2</color>
+    <color name="hsql_accent">#FF9800</color>
+
+    <!-- CORES DO HYPERION DEBUG -->
+    <color name="hsql_table_row_colour_standard">#fefefe</color>
+    <color name="hsql_table_row_colour_alt">#e8e8e8</color>
+</resources>

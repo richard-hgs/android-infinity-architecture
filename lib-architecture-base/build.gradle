@@ -1,0 +1,110 @@
+apply plugin: 'com.android.library'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion project.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        // for data binding:
+        // - includes the viewBinding features and generate classes, but increase the build time
+        dataBinding = true
+
+        // for view binding:
+        // - includes only the findViewById abstraction and is more light
+        // viewBinding = true
+    }
+}
+
+dependencies {
+    // Local libs
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Test libs
+    testImplementation "junit:junit:$project.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$project.androidxTestExtJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$project.androidxTestEspressoCoreVersion"
+
+    // Support Libs
+    implementation "androidx.appcompat:appcompat:$project.androidxAppcompatVersion"
+    implementation "androidx.recyclerview:recyclerview:$project.androidxRecyclerViewVersion"
+    implementation "com.google.android.material:material:$project.androidMaterialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$project.androidxConstraintLayoutVersion"
+    implementation "androidx.legacy:legacy-support-v4:$project.androidxLegacySupportV4Version"
+    implementation "androidx.navigation:navigation-runtime:$project.androidxNavigationRuntimeVersion"
+
+    // CustomViews and Utils Libs
+    implementation project(":lib-architecture-views")
+    implementation project(":lib-architecture-utils")
+
+    // Custom toast
+    implementation "com.github.GrenderG:Toasty:$project.gRenderGtoastyVersion"
+
+    // Custom alerts
+    implementation "com.github.f0ris.sweetalert:library:$project.f0risSweetAlertLibraryVersion"
+
+    // Barcode creator | scanner
+//    implementation "me.dm7.barcodescanner:zxing:1.8.4"
+
+    // MVVM - Architecture
+    // Lifecycle - ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$project.androidxLifecycleViewModelVersion"
+    // Lifecycle - LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata:$project.androidxLifecycleLivedataVersion"
+    // Lifecycle - Lifecycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime:$project.androidxLifecycleRuntimeVersion"
+    // Lifecycle - Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$project.androidxLifecycleViewModelSavedStateVersion"
+    // Annotation processor
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$project.androidxLifecycleCompilerVersion"
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    // implementation "androidx.lifecycle:lifecycle-common-java8:2.3.1"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$project.googleCodeGsonVersion"
+
+    // Database - Room
+    implementation "androidx.room:room-runtime:$project.androidxRoomRuntimeVersion"
+    annotationProcessor "androidx.room:room-compiler:$project.androidxRoomCompilerVersion"
+    // optional - RxJava2 support for Room
+    implementation "androidx.room:room-rxjava2:$project.androidxRoomRxJava2Version"
+    // optional - RxJava3 support for Room
+    implementation "androidx.room:room-rxjava3:$project.androidxRoomRxJava3Version"
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$project.androidxRoomGuavaVersion"
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:$project.androidxRoomTestingVersion"
+
+    // Dependency injection - Hilt
+    implementation "com.google.dagger:hilt-android:$project.daggerHiltAndroidVersion"
+    annotationProcessor "com.google.dagger:hilt-compiler:$project.daggerHiltCompilerVersion"
+
+    // For instrumentation tests
+    androidTestImplementation  "com.google.dagger:hilt-android-testing:$project.daggerHiltAndroidTestingVersion"
+    androidTestAnnotationProcessor "com.google.dagger:hilt-compiler:$project.daggerHiltCompilerTestingVersion"
+
+    // For local unit tests
+    testImplementation "com.google.dagger:hilt-android-testing:$project.daggerHiltAndroidTestingVersion"
+    testAnnotationProcessor "com.google.dagger:hilt-compiler:$project.daggerHiltCompilerTestingVersion"
+
+    // For editing image
+    implementation "com.github.yalantis:ucrop:$project.yalantisUcropVersion"
+}

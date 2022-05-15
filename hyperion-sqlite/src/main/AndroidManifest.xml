@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.willowtreeapps.hyperion.sqlite">
+    <application>
+        <activity android:name=".presentation.database.DatabaseListActivity"
+            android:theme="@style/HsqlAppTheme.NoActionBar"
+            android:configChanges="orientation|keyboardHidden"/>
+        <activity android:name=".presentation.tables.TablesListActivity"
+            android:theme="@style/HsqlAppTheme.NoActionBar"/>
+        <activity android:name=".presentation.records.DbRecordViewerActivity"
+            android:theme="@style/HsqlAppTheme.NoActionBar"/>
+    </application>
+</manifest>

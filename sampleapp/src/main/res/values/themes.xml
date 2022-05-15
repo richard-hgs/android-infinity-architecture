@@ -1,0 +1,309 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.InfinityComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/lightPrimaryColor</item>
+        <item name="colorPrimaryVariant">@color/lightPrimaryColorDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/lightPrimaryColor</item>
+        <item name="colorSecondaryVariant">@color/lightPrimaryColorDark</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <!-- Customize your theme here. -->
+        <!-- ActionBarStyle -->
+        <item name="actionBarStyle">@style/ActionBarTheme</item>
+        <!--        <item name="appBarLayoutStyle">@style/AppBarLayoutTheme</item>-->
+        <!-- InfinityButton Style -->
+        <item name="infinityButtonStyle">@style/InfinityButtonDefaultStyle</item>
+        <!-- InfinityImageButton Style -->
+        <item name="infinityImageButtonStyle">@style/InfinityImageButtonDefaultStyle</item>
+        <!-- InfinityImageView Style -->
+        <item name="infinityImageViewStyle">@style/InfinityImageViewDefaultStyle</item>
+        <!-- InfinityEditText Style -->
+        <item name="infinityEditTextStyle">@style/InfinityEditTextDefaultStyle</item>
+        <!-- InfinityTextInputLayout Style -->
+        <item name="textInputStyle">@style/InfinityTextInputLayoutNoneStyle</item>
+        <item name="textInputOutlinedStyle">@style/InfinityTextInputLayoutOutlinedStyle</item>
+        <item name="textInputOutlinedDenseStyle">@style/InfinityTextInputLayoutOutlinedDenseStyle</item>
+        <item name="textInputFilledStyle">@style/InfinityTextInputLayoutFilledStyle</item>
+        <item name="textInputFilledDenseStyle">@style/InfinityTextInputLayoutFilledDenseStyle</item>
+        <item name="customTextInputLayoutStyle">@style/CustomTextInputLayoutDefaultStyle</item>
+        <!-- InfinityTextInputEditText Style -->
+        <item name="infinityTextInputEditTextStyle">@style/InfinityTextInputEditTextStyle</item>
+    </style>
+
+    <!-- AppTheme No ActionBar Style -->
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- ActionBar Style -->
+    <style name="ActionBarTheme" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="titleTextStyle">@style/ActionBarTitleTheme</item>
+        <item name="subtitleTextStyle">@style/ActionBarSubtitleTheme</item>
+    </style>
+
+    <!-- AppBarLayout Style -->
+    <style name="AppBarLayoutTheme" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimaryInverse">@android:color/white</item>
+        <item name="android:textColorSecondary">#B3FFFFFF</item>
+        <item name="android:textColorSecondaryInverse">#B3FFFFFF</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="toolbarStyle">@style/ToolbarTheme</item>
+    </style>
+
+    <!-- Toolbar Style -->
+    <style name="ToolbarTheme" parent="Widget.AppCompat.Toolbar">
+        <item name="titleTextAppearance">@style/ToolbarTitleTheme</item>
+        <item name="subtitleTextAppearance">@style/ToolbarSubtitleTheme</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
+    <!-- ActionBar Title Style -->
+    <style name="ActionBarTitleTheme" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Toolbar Title Style -->
+    <style name="ToolbarTitleTheme" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- ActionBar Subtitle Style -->
+    <style name="ActionBarSubtitleTheme" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Toolbar Subtitle Style -->
+    <style name="ToolbarSubtitleTheme" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- InfinityImageButton Style -->
+    <style name="InfinityButtonDefaultStyle" parent="InfinityButtonStyle">
+        <!-- Place your default theme customization styles here will affect all Infinity views -->
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- InfinityImageButton Style -->
+    <style name="InfinityImageButtonDefaultStyle" parent="InfinityImageButtonStyle">
+        <!-- Place your default theme customization styles here will affect all Infinity views -->
+    </style>
+
+    <!-- InfinityImageView Style -->
+    <style name="InfinityImageViewDefaultStyle" parent="InfinityImageViewStyle">
+        <!-- Place your default theme customization styles here will affect all Infinity views -->
+    </style>
+
+    <!-- InfinityEditText Style -->
+    <style name="InfinityEditTextDefaultStyle" parent="InfinityEditTextStyle">
+        <!-- Place your default theme customization styles here will affect all Infinity views -->
+    </style>
+
+    <!-- InfinityTextInputLayout Style -->
+    <style name="CustomTextInputLayoutDefaultStyle" parent="InfinityTextInputLayoutStyle">
+        <!-- Place your default theme customization styles here will affect all Infinity views -->
+    </style>
+
+    <!-- InfinityTextInputEditText Style -->
+    <style name="CustomTextInputEditTextDefaultStyle" parent="InfinityTextInputEditTextStyle">
+        <!-- Place your default theme customization styles here will affect all Infinity views -->
+    </style>
+
+    <!-- InfinityEditText Style2 -->
+    <style name="InfinityEditTextCustomBorder" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/lightGray</item>
+    </style>
+    <!-- InfinityEditText Style3 -->
+    <style name="InfinityEditTextCustomBorderWidthFocused" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_width_focused">4dp</item>
+        <item name="bg_border_color">@color/lightGray</item>
+    </style>
+    <!-- InfinityEditText Style4 -->
+    <style name="InfinityEditTextCustomBorderColor" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/lightRed</item>
+    </style>
+    <!-- InfinityEditText Style5 -->
+    <style name="InfinityEditTextCustomBorderColorFocused" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/lightRed</item>
+        <item name="bg_border_color_focused">@color/lightBlue</item>
+    </style>
+    <!-- InfinityEditText Style6 -->
+    <style name="InfinityEditTextCustomBorderRadius" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/lightGreen</item>
+        <item name="bg_radius">30</item>
+    </style>
+    <!-- InfinityEditText Style7 -->
+    <style name="InfinityEditTextCustomBorderRadiusFocused" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/lightGreen</item>
+        <item name="bg_radius">30</item>
+        <item name="bg_radius_focused">60</item>
+    </style>
+    <!-- InfinityEditText Style8 -->
+    <style name="InfinityEditTextCustomCornerBorderRadius" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/lightBlue</item>
+        <item name="bg_radius_bottom_right">30</item>
+        <item name="bg_radius_top_left">30</item>
+    </style>
+    <!-- InfinityEditText Style9 -->
+    <style name="InfinityEditTextCustomCornerBorderRadiusFocused" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/lightBlue</item>
+        <item name="bg_radius_bottom_right">30</item>
+        <item name="bg_radius_top_left">30</item>
+        <item name="bg_radius_top_right_focused">30</item>
+        <item name="bg_radius_bottom_left_focused">30</item>
+    </style>
+    <!-- InfinityEditText Style10 -->
+    <style name="InfinityEditTextCustomBackgroundColor" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/lightGraySoft</item>
+    </style>
+    <!-- InfinityEditText Style11 -->
+    <style name="InfinityEditTextCustomBackgroundColorFocused" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/lightGraySoft</item>
+        <item name="bg_color_focused">@color/lightGreenSoft</item>
+    </style>
+    <!-- InfinityEditText Style12 -->
+    <style name="InfinityEditTextCustomBackgroundColorRadius" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/lightRedSoft</item>
+        <item name="bg_radius">30</item>
+    </style>
+    <!-- InfinityEditText Style13 -->
+    <style name="InfinityEditTextCustomBackgroundColorRadiusFocused" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/lightRedSoft</item>
+        <item name="bg_radius">30</item>
+        <item name="bg_radius_focused">60</item>
+    </style>
+    <!-- InfinityEditText Style14 -->
+    <style name="InfinityEditTextCustomBackgroundColorCornersRadius" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/lightGreenSoft</item>
+        <item name="bg_radius_top_left">30</item>
+        <item name="bg_radius_bottom_right">30</item>
+    </style>
+    <!-- InfinityEditText Style15 -->
+    <style name="InfinityEditTextCustomBackgroundColorCornersRadiusFocused" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/lightGreenSoft</item>
+        <item name="bg_radius_top_left">30</item>
+        <item name="bg_radius_top_right_focused">30</item>
+        <item name="bg_radius_bottom_right">30</item>
+        <item name="bg_radius_bottom_left_focused">30</item>
+    </style>
+
+    <!-- InfinityTextInputLayout Style2 -->
+    <style name="InfinityTextInputLayoutCustomBorder" parent="InfinityTextInputLayoutStyle">
+        <item name="customTextInputLayoutNoneStyle" >@style/InfinityTextInputLayoutCustomBorder.BoxModeNone</item>
+        <item name="incrementCollapsedPaddingTop">4dp</item>
+    </style>
+    <style name="InfinityTextInputLayoutCustomBorder.BoxModeNone" parent="Widget.Design.TextInputLayout">
+        <item name="materialThemeOverlay">@style/Infinity.TextInputEditTextNoneStyle.MaterialThemeOverlay</item>
+    </style>
+    <style name="InfinityTextInputLayoutCustomBorder.BoxModeNone.ThemeOverlay" parent="Infinity.TextInputEditTextNoneStyle.MaterialThemeOverlay">
+    </style>
+    <!-- InfinityTextInputEditText Style2 -->
+    <style name="InfinityTextInputEditTextCustomBorder" parent="InfinityTextInputEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/lightGray</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+<!--    <style name="AppTheme.NoActionBar.DarkStatusBar">-->
+<!--        <item name="android:statusBarColor">#656565</item>-->
+<!--    </style>-->
+
+<!--    <style name="CustomDatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">-->
+<!--        <item name="colorAccent">@color/light_color_primary</item>-->
+<!--        <item name="android:datePickerStyle">@style/CustomDatePickerStyle</item>-->
+<!--        <item name="android:colorAccent">@color/light_color_primary_dark</item>-->
+<!--    </style>-->
+
+<!--    <style name="CustomDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">-->
+<!--        <item name="android:headerBackground">@color/light_color_primary</item>-->
+<!--        <item name="android:calendarTextColor">@color/light_color_primary_dark</item>-->
+<!--        <item name="android:dayOfWeekBackground">@color/light_color_primary_dark</item>-->
+<!--        <item name="android:yearListSelectorColor">@color/light_color_primary</item>-->
+<!--        <item name="android:datePickerMode">calendar</item>-->
+<!--    </style>-->
+
+<!--    <style name="CustomTimePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">-->
+<!--        <item name="colorAccent">@color/light_color_primary</item>-->
+<!--        <item name="android:timePickerStyle">@style/CustomTimePickerStyle</item>-->
+<!--        <item name="android:colorAccent">@color/light_color_primary_dark</item>-->
+<!--    </style>-->
+
+<!--    <style name="CustomTimePickerStyle" parent="@android:style/Widget.Material.Light.TimePicker">-->
+<!--        <item name="android:headerBackground">@color/light_color_primary</item>-->
+<!--        <item name="android:numbersSelectorColor">@color/light_color_primary</item>-->
+<!--        <item name="android:amPmTextColor">@color/light_color_primary_dark</item>-->
+<!--        <item name="android:timePickerMode">clock</item>-->
+<!--    </style>-->
+
+<!--    <style name="Edit_text">-->
+<!--        <item name="android:layout_width"> match_parent</item>-->
+<!--        <item name="android:layout_height"> wrap_content</item>-->
+<!--        <item name="android:background">@drawable/edit_text</item>-->
+<!--    </style>-->
+
+<!--    <style name="input_text">-->
+<!--        <item name="android:textSize">12sp</item>-->
+<!--        <item name="android:textColor">@color/red</item>-->
+<!--        <item name="android:textColorHint">@color/red</item>-->
+<!--    </style>-->
+<!--    <style name="splashScreenTheme" parent="@android:style/Theme.DeviceDefault.Light.NoActionBar">-->
+<!--        <item name="android:windowBackground">@drawable/logo</item>-->
+<!--    </style>-->
+
+<!--    &lt;!&ndash; ToolBar &ndash;&gt;-->
+<!--    <style name="ToolBarStyle" parent="Theme.AppCompat">-->
+<!--        <item name="android:textColorPrimary">@android:color/white</item>-->
+<!--        <item name="android:textColorSecondary">@android:color/white</item>-->
+<!--        <item name="actionMenuTextColor">@android:color/white</item>-->
+<!--    </style>-->
+
+<!--    <style name="AppTheme.TextInputLayout" parent="Widget.Design.TextInputLayout">-->
+<!--        &lt;!&ndash; My custom attrs &ndash;&gt;-->
+<!--    </style>-->
+
+<!--    &lt;!&ndash; Estilo Tela RvAdptConsumptionItem TextInputLayout &ndash;&gt;-->
+<!--    <style name="AppTheme.MyTextInputLayout.Consumption" parent="AppTheme">-->
+<!--        <item name="hintTextAppearance">@style/AppTheme.MyTextInputLayout.TextFloatLabelAppearance.Consumption</item>-->
+<!--        <item name="errorTextAppearance">@style/AppTheme.MyTextInputLayout.TextErrorAppearance.Consumption</item>-->
+<!--        <item name="counterTextAppearance">@style/TextAppearance.Design.Counter</item>-->
+<!--        <item name="counterOverflowTextAppearance">@style/TextAppearance.Design.Counter.Overflow</item>-->
+
+<!--        <item name="colorControlNormal">@color/white</item>-->
+<!--        <item name="colorControlActivated">@color/white</item>-->
+<!--        <item name="colorControlHighlight">@color/white</item>-->
+<!--    </style>-->
+
+<!--    <style name="AppTheme.MyTextInputLayout.TextFloatLabelAppearance.Consumption" parent="TextAppearance.Design.Hint">-->
+<!--        &lt;!&ndash; Floating label appearance here &ndash;&gt;-->
+<!--        <item name="android:textColor">@color/white</item>-->
+<!--        <item name="android:textSize">20sp</item>-->
+<!--    </style>-->
+
+<!--    <style name="AppTheme.MyTextInputLayout.TextErrorAppearance.Consumption" parent="TextAppearance.Design.Error">-->
+<!--        &lt;!&ndash; Error message appearance here &ndash;&gt;-->
+<!--        <item name="android:textColor">#ff0000</item>-->
+<!--        <item name="android:textSize">20sp</item>-->
+<!--    </style>-->
+
+<!--    <style name="SwitchCompatCardTheme">-->
+<!--        <item name="colorControlActivated">@color/white</item>-->
+<!--        <item name="colorControlNormal">#666666</item>-->
+<!--        <item name="colorSwitchThumbNormal">#444444</item>-->
+<!--    </style>-->
+</resources>

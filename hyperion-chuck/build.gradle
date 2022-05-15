@@ -1,0 +1,37 @@
+apply plugin: 'com.android.library'
+
+group = project.hyperionLibraryGroup
+version = project.hyperionLibraryVersion
+
+android {
+    compileSdkVersion project.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode hyperionBuildVersionCode()
+        versionName version
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    resourcePrefix 'hchuck_'
+
+}
+
+dependencies {
+    api "androidx.annotation:annotation:$project.androidxAnnotationVersion"
+    api project(':hyperion-plugin')
+    annotationProcessor "com.google.auto.service:auto-service:$project.googleAutoServiceVersion"
+    api "com.readystatesoftware.chuck:library:$project.readystatesoftwareChuckVersion"
+}
+
+// apply from: "https://raw.githubusercontent.com/Commit451/gradle-android-javadocs/1.0.0/gradle-android-javadocs.gradle"

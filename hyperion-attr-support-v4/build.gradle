@@ -1,0 +1,34 @@
+apply plugin: 'com.android.library'
+// apply from: '../publish.gradle'
+
+group = project.hyperionLibraryGroup
+version = project.hyperionLibraryVersion
+
+android {
+    compileSdkVersion project.compileSdkVersion
+    // buildToolsVersion project.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode hyperionBuildVersionCode()
+        versionName version
+
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    resourcePrefix 'ha_'
+}
+
+dependencies {
+    compileOnly project(':hyperion-plugin')
+    compileOnly project(':hyperion-attr')
+    annotationProcessor "com.google.auto.service:auto-service:$project.googleAutoServiceVersion"
+    implementation "androidx.appcompat:appcompat:$project.androidxAppcompatVersion"
+    implementation "androidx.slidingpanelayout:slidingpanelayout:$project.androidxSlidingPaneLayoutVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$project.androidxSwipeRefreshLayoutVersion"
+}

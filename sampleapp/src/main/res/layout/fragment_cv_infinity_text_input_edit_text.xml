@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.infinity.architecture.sampleapp.ui.screens.fragments.custom_views.FragmentCvInfinityTextInputEditTextVm" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <com.infinity.architecture.views.InfinityTextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edittxt_desc_1">
+
+                    <com.infinity.architecture.views.InfinityTextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.infinity.architecture.views.InfinityTextInputLayout>
+
+                <com.infinity.architecture.views.InfinityTextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/edittxt_desc_1_2"
+                    app:customBoxBackgroundMode="filled">
+
+                    <com.infinity.architecture.views.InfinityTextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.infinity.architecture.views.InfinityTextInputLayout>
+
+                <com.infinity.architecture.views.InfinityTextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/edittxt_desc_1_3"
+                    app:customBoxBackgroundMode="filled_dense">
+
+                    <com.infinity.architecture.views.InfinityTextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </com.infinity.architecture.views.InfinityTextInputLayout>
+
+                <com.infinity.architecture.views.InfinityTextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/edittxt_desc_1_4"
+                    app:customBoxBackgroundMode="outline">
+
+                    <com.infinity.architecture.views.InfinityTextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.infinity.architecture.views.InfinityTextInputLayout>
+
+                <com.infinity.architecture.views.InfinityTextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/edittxt_desc_1_5"
+                    app:customBoxBackgroundMode="outline_dense">
+
+                    <com.infinity.architecture.views.InfinityTextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </com.infinity.architecture.views.InfinityTextInputLayout>
+
+                <com.infinity.architecture.views.InfinityTextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/edittxt_desc_1_6"
+                    app:customBoxBackgroundMode="none">
+
+                    <com.infinity.architecture.views.InfinityTextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.infinity.architecture.views.InfinityTextInputLayout>
+
+                <com.infinity.architecture.views.InfinityTextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/edittxt_desc_1_7"
+                    app:customBoxBackgroundMode="none_dense">
+
+                    <com.infinity.architecture.views.InfinityTextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </com.infinity.architecture.views.InfinityTextInputLayout>
+
+                <com.infinity.architecture.views.InfinityTextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/edittxt_desc_2">
+
+                    <com.infinity.architecture.views.InfinityTextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        app:mask_type="monetary" />
+
+                </com.infinity.architecture.views.InfinityTextInputLayout>
+
+                <com.infinity.architecture.views.InfinityTextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/edittxt_desc_3">
+
+                    <com.infinity.architecture.views.InfinityTextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        app:mask_type="cellphone_1" />
+
+                </com.infinity.architecture.views.InfinityTextInputLayout>
+
+                <com.infinity.architecture.views.InfinityTextInputLayout
+                    style="@style/InfinityTextInputLayoutCustomBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/edittxt_desc_4">
+
+                    <com.infinity.architecture.views.InfinityTextInputEditText
+                        style="@style/InfinityTextInputEditTextCustomBorder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.infinity.architecture.views.InfinityTextInputLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

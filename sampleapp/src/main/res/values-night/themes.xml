@@ -1,0 +1,177 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.InfinityComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/lightPrimaryColor</item>
+        <item name="colorPrimaryVariant">@color/lightPrimaryColorDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/lightPrimaryColor</item>
+        <item name="colorSecondaryVariant">@color/lightPrimaryColorDark</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <!-- ActionBarStyle -->
+        <item name="actionBarStyle">@style/ActionBarTheme</item>
+        <!--        <item name="appBarLayoutStyle">@style/AppBarLayoutTheme</item>-->
+        <!-- InfinityButton Style -->
+        <item name="infinityButtonStyle">@style/InfinityButtonDefaultStyle</item>
+        <!-- InfinityImageButton Style -->
+        <item name="infinityImageButtonStyle">@style/InfinityImageButtonDefaultStyle</item>
+        <!-- InfinityImageView Style -->
+        <item name="infinityImageViewStyle">@style/InfinityImageViewDefaultStyle</item>
+        <!-- InfinityEditText Style -->
+        <item name="infinityEditTextStyle">@style/InfinityEditTextDefaultStyle</item>
+    </style>
+
+        <!-- ActionBar Style -->
+    <style name="ActionBarTheme" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="titleTextStyle">@style/ActionBarTitleTheme</item>
+        <item name="subtitleTextStyle">@style/ActionBarSubtitleTheme</item>
+    </style>
+
+    <!-- AppBarLayout Style -->
+    <style name="AppBarLayoutTheme" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimaryInverse">@android:color/white</item>
+        <item name="android:textColorSecondary">#B3FFFFFF</item>
+        <item name="android:textColorSecondaryInverse">#B3FFFFFF</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="toolbarStyle">@style/ToolbarTheme</item>
+    </style>
+
+    <!-- Toolbar Style -->
+    <style name="ToolbarTheme" parent="Widget.AppCompat.Toolbar">
+        <item name="titleTextAppearance">@style/ToolbarTitleTheme</item>
+        <item name="subtitleTextAppearance">@style/ToolbarSubtitleTheme</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
+    <!-- ActionBar Title Style -->
+    <style name="ActionBarTitleTheme" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Toolbar Title Style -->
+    <style name="ToolbarTitleTheme" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- ActionBar Subtitle Style -->
+    <style name="ActionBarSubtitleTheme" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Toolbar Subtitle Style -->
+    <style name="ToolbarSubtitleTheme" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- InfinityImageButton Style -->
+    <style name="InfinityButtonDefaultStyle" parent="InfinityButtonStyle">
+        <!-- Place your default theme customization styles here will affect all Infinity views -->
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- InfinityImageButton Style -->
+    <style name="InfinityImageButtonDefaultStyle" parent="InfinityImageButtonStyle">
+        <!-- Place your default theme customization styles here will affect all Infinity views -->
+    </style>
+
+    <!-- InfinityImageView Style -->
+    <style name="InfinityImageViewDefaultStyle" parent="InfinityImageViewStyle">
+        <!-- Place your default theme customization styles here will affect all Infinity views -->
+    </style>
+
+    <!-- InfinityEditText Style -->
+    <style name="InfinityEditTextDefaultStyle" parent="InfinityEditTextStyle">
+        <!-- Place your default theme customization styles here will affect all Infinity views -->
+    </style>
+    <!-- InfinityEditText Style2 -->
+    <style name="InfinityEditTextCustomBorder" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/darkGray</item>
+    </style>
+    <!-- InfinityEditText Style3 -->
+    <style name="InfinityEditTextCustomBorderWidthFocused" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_width_focused">4dp</item>
+        <item name="bg_border_color">@color/darkGray</item>
+    </style>
+    <!-- InfinityEditText Style4 -->
+    <style name="InfinityEditTextCustomBorderColor" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/darkRed</item>
+    </style>
+    <!-- InfinityEditText Style5 -->
+    <style name="InfinityEditTextCustomBorderColorFocused" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/darkRed</item>
+        <item name="bg_border_color_focused">@color/darkBlue</item>
+    </style>
+    <!-- InfinityEditText Style6 -->
+    <style name="InfinityEditTextCustomBorderRadius" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/darkGreen</item>
+        <item name="bg_radius">30</item>
+    </style>
+    <!-- InfinityEditText Style7 -->
+    <style name="InfinityEditTextCustomBorderRadiusFocused" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/darkGreen</item>
+        <item name="bg_radius">30</item>
+        <item name="bg_radius_focused">30</item>
+    </style>
+    <!-- InfinityEditText Style8 -->
+    <style name="InfinityEditTextCustomCornerBorderRadius" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/darkBlue</item>
+        <item name="bg_radius_bottom_right">30</item>
+        <item name="bg_radius_top_left">30</item>
+    </style>
+    <!-- InfinityEditText Style9 -->
+    <style name="InfinityEditTextCustomCornerBorderRadiusFocused" parent="InfinityEditTextStyle">
+        <item name="bg_border_width">1dp</item>
+        <item name="bg_border_color">@color/darkBlue</item>
+        <item name="bg_radius_bottom_right">30</item>
+        <item name="bg_radius_top_left">30</item>
+        <item name="bg_radius_top_right_focused">30</item>
+        <item name="bg_radius_bottom_left_focused">30</item>
+    </style>
+    <!-- InfinityEditText Style10 -->
+    <style name="InfinityEditTextCustomBackgroundColor" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/darkGraySoft</item>
+    </style>
+    <!-- InfinityEditText Style11 -->
+    <style name="InfinityEditTextCustomBackgroundColorFocused" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/darkGraySoft</item>
+        <item name="bg_color_focused">@color/darkGreenSoft</item>
+    </style>
+    <!-- InfinityEditText Style12 -->
+    <style name="InfinityEditTextCustomBackgroundColorRadius" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/darkRedSoft</item>
+        <item name="bg_radius">30</item>
+    </style>
+    <!-- InfinityEditText Style13 -->
+    <style name="InfinityEditTextCustomBackgroundColorRadiusFocused" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/darkRedSoft</item>
+        <item name="bg_radius">30</item>
+        <item name="bg_radius_focused">60</item>
+    </style>
+    <!-- InfinityEditText Style14 -->
+    <style name="InfinityEditTextCustomBackgroundColorCornersRadius" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/darkGreenSoft</item>
+        <item name="bg_radius_top_left">30</item>
+        <item name="bg_radius_bottom_right">30</item>
+    </style>
+    <!-- InfinityEditText Style15 -->
+    <style name="InfinityEditTextCustomBackgroundColorCornersRadiusFocused" parent="InfinityEditTextStyle">
+        <item name="bg_color">@color/darkGreenSoft</item>
+        <item name="bg_radius_top_left">30</item>
+        <item name="bg_radius_top_right_focused">30</item>
+        <item name="bg_radius_bottom_right">30</item>
+        <item name="bg_radius_bottom_left_focused">30</item>
+    </style>
+</resources>

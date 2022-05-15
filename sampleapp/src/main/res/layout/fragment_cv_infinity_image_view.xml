@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.infinity.architecture.sampleapp.ui.screens.fragments.custom_views.FragmentCvInfinityImageViewVm" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/imgv_content_desc_1"
+                    android:src="@drawable/ic_baseline_image_light_60" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/imgv_desc_1"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/imgv_content_desc_2"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:src="@string/def_url_img"
+                    app:src_error="@drawable/ic_baseline_image_light_60"
+                    app:src_placeholder="@drawable/ic_baseline_image_light_60"
+                    app:src_scale_type="center_crop" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/imgv_desc_2"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/imgv_content_desc_3"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:blur_color="#33AA0000"
+                    app:blur_enabled="true"
+                    app:blur_radius="0"
+                    app:blur_type="overlap"
+                    app:src="@string/def_url_img"
+                    app:src_error="@drawable/ic_baseline_image_light_60"
+                    app:src_placeholder="@drawable/ic_baseline_image_light_60"
+                    app:src_scale_type="center_crop" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/imgv_desc_3"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/imgv_content_desc_4"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:blur_enabled="true"
+                    app:blur_radius="25"
+                    app:blur_type="defocus"
+                    app:src="@string/def_url_img"
+                    app:src_error="@drawable/ic_baseline_image_light_60"
+                    app:src_placeholder="@drawable/ic_baseline_image_light_60"
+                    app:src_scale_type="center_crop" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/imgv_desc_4"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/imgv_content_desc_5"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:blur_color="#3300FF00"
+                    app:blur_enabled="true"
+                    app:blur_radius="25"
+                    app:blur_type="overlap_defocus"
+                    app:src="@string/def_url_img"
+                    app:src_error="@drawable/ic_baseline_image_light_60"
+                    app:src_placeholder="@drawable/ic_baseline_image_light_60"
+                    app:src_resize_dimen_height="80dp"
+                    app:src_resize_dimen_width="80dp"
+                    app:src_scale_type="center_crop" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/imgv_desc_5"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/imgv_content_desc_6"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:src="@drawable/ic_baseline_image_light_60"
+                    app:src_scale_type="center_crop"
+                    app:src_transition_type="none" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/imgv_desc_6"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/imgv_content_desc_7"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:src="@string/def_url_img"
+                    app:src_scale_type="center_crop"
+                    app:src_transition_duration="2000"
+                    app:src_transition_type="crossfade" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/imgv_desc_7"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/imgv_content_desc_8"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:src="@string/def_url_img"
+                    app:src_radius="30"
+                    app:src_scale_type="center_crop" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/imgv_desc_8"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/imgv_content_desc_9"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:src="@string/def_url_img"
+                    app:src_radius_top_left="30"
+                    app:src_scale_type="center_crop" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/imgv_desc_9"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/imgv_content_desc_10"
+                    android:src="@drawable/ic_baseline_image_dark_60"
+                    app:bg_color="@color/lightPrimaryColor"
+                    app:bg_radius="30"
+                    app:src_radius_top_left="30"
+                    app:src_scale_type="center_crop" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/imgv_desc_10"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/imgv_content_desc_11"
+                    android:src="@drawable/ic_baseline_image_dark_60"
+                    app:bg_color="@color/lightPrimaryColor"
+                    app:bg_radius_top_left="30"
+                    app:src_radius_top_left="30"
+                    app:src_scale_type="center_crop" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/imgv_desc_11"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

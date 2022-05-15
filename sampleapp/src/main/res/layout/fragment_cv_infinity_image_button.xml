@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.infinity.architecture.sampleapp.ui.screens.fragments.custom_views.FragmentCvInfinityImageButtonVm" />
+    </data>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/btnimgv_content_desc_1"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_dark_60"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}"
+                    app:throttleTimeMillis="@{2000}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_1"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_2"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_dark_60"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_2"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_3"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_dark_60"
+                    app:bg_color="#CD0101"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_3"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_4"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:bg_color="#FFF200"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_4"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_5"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_dark_60"
+                    app:bg_radius_top_left="60"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_5"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_6"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_dark_60"
+                    app:bg_radius="60"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_6"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_7"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:bg_border_color="@color/lightPrimaryColorDark"
+                    app:bg_border_width="2dp"
+                    app:bg_color="#FEFEFE"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_7"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_8"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:bg_border_color="#CD0101"
+                    app:bg_border_width="2dp"
+                    app:bg_color="#FEFEFE"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_8"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_9"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:bg_border_color="@color/lightPrimaryColorDark"
+                    app:bg_border_width="2dp"
+                    app:bg_color="#FEFEFE"
+                    app:bg_radius_top_left="60"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_9"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_10"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:bg_border_color="@color/lightPrimaryColorDark"
+                    app:bg_border_width="2dp"
+                    app:bg_color="#FEFEFE"
+                    app:bg_radius="60"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_10"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_11"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:bg_border_color="#FF0000"
+                    app:bg_border_width="2dp"
+                    app:bg_color="#0097DC"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_11"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_12"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:bg_shape_type="oval"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_12"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_13"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:bg_shape_type="oval"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_13"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.infinity.architecture.views.InfinityImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/btnimgv_content_desc_14"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_baseline_image_light_60"
+                    app:src_scale_type="center_crop"
+                    app:src="@string/def_url_img"
+                    app:src_error="@drawable/ic_baseline_image_light_60"
+                    app:src_placeholder="@drawable/ic_baseline_image_light_60"
+                    app:src_resize_dimen_height="10dp"
+                    app:src_resize_dimen_width="10dp"
+                    app:throttleClickListener="@{viewModel::onBtnClick}"
+                    app:throttleEventListener="@{viewModel::onBtnThrottling}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnimgv_desc_14"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

@@ -9,29 +9,36 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.infinity.architecture.utils.base.FragmentListener;
+import com.infinity.architecture.utils.base.viewpager.ViewPagerFragmentStateAdapterCom;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 public class ViewPagerFragmentStateAdapter extends FragmentStateAdapter {
 
-    private ArrayList<FragmentItem<? extends Fragment>> fragmentItemList;
+    private final ArrayList<FragmentItem<? extends Fragment>> fragmentItemList;
 
-    public ViewPagerFragmentStateAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, @NonNull ArrayList<FragmentItem<? extends Fragment>> fragmentItemList) {
+    @Nullable
+    private final FragmentListener fragmentListener;
+
+    public ViewPagerFragmentStateAdapter(
+        @NonNull FragmentManager fragmentManager,
+        @NonNull Lifecycle lifecycle,
+        @NonNull ArrayList<FragmentItem<? extends Fragment>> fragmentItemList,
+        @Nullable FragmentListener fragmentListener
+    ) {
         super(fragmentManager, lifecycle);
         this.fragmentItemList = fragmentItemList;
+        this.fragmentListener = fragmentListener;
     }
-//
-//    public static ViewPagerFragmentStateAdapter getInstance(
-//        @NonNull FragmentManager fragmentManager,
-//        @NonNull Lifecycle lifecycle
-//    ) {
-//        return new ViewPagerFragmentStateAdapter(fragmentManager, lifecycle);
-//    }
+
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        Fragment fragment = null;
+        Fragment fragment;
         try {
             FragmentItem<?> fragmentItem = fragmentItemList.get(position);
             Class<?> fragClass = fragmentItem.getFragmentClass();
@@ -40,6 +47,11 @@ public class ViewPagerFragmentStateAdapter extends FragmentStateAdapter {
 
             if (fragment != null && fragmentItem.getArgs() != null) {
                 fragment.setArguments(fragmentItem.getArgs());
+            }
+
+            // Setup listener to retrieve instanced ViewPager fragment view models when they are created
+            if (fragment instanceof ViewPagerFragmentStateAdapterCom) {
+                ((ViewPagerFragmentStateAdapterCom) fragment).setFragmentListener(fragmentListener);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -17,20 +17,28 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -38,6 +46,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
@@ -76,8 +85,10 @@ import com.infinity.architecture.base.models.ui.OpenScreenInfo;
 import com.infinity.architecture.base.models.ui.PermissionInfo;
 import com.infinity.architecture.base.models.ui.PickPictureInfo;
 import com.infinity.architecture.base.models.ui.PickPictureResultInfo;
+import com.infinity.architecture.base.models.ui.PopupMenuInfo;
 import com.infinity.architecture.base.models.ui.SpeechRecognizerInfo;
 import com.infinity.architecture.base.models.ui.SpeechRecognizerResultInfo;
+import com.infinity.architecture.base.models.ui.SystemAppConfigInfo;
 import com.infinity.architecture.base.models.ui.TakePictureInfo;
 import com.infinity.architecture.base.models.ui.TakePictureResultInfo;
 import com.infinity.architecture.base.models.ui.ToastyInfo;
@@ -150,6 +161,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     private HashMap<String, Dialog> customDialogInstances = new HashMap<>();
 
     private HashMap<String, ? extends BaseDialogViewModel> customDialogVmInstances = new HashMap<>();
+
+    /**
+     * Stores the poupMenu instances to be used or cleaned later
+     */
+    private HashMap<String, PopupMenu> popupMenuInstances = new HashMap<>();
 
     /**
      * Stores the last toasts to be cleared the references
@@ -495,7 +511,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
      */
     private void performBackPressed(boolean closeKeyboardIfOpen) {
         // Ensures the pending fragment transactions is executed before executing any further changes
-        new Handler().post(new Runnable() {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
             @SuppressWarnings("ConstantConditions")
             @Override
             public void run() {
@@ -540,6 +556,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
             }
 
             removeAllCustomDialogReferences(true);
+
+            removeAllPopupMenuReferences(true);
 
             for (Toast toastAt : lastToasts) {
                 toastAt.cancel();
@@ -765,6 +783,55 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
                                             // dataBindingInstance.setLifecycleOwner(retrieveLifecycleOwner());
                                             dataBindingInstance.setLifecycleOwner(lifecycleOwner);
 
+                                            // Set width and height
+                                            if (
+                                                (customDialogInfo.getWidth() != null ||
+                                                 customDialogInfo.getHeight() != null) &&
+                                                dataBindingInstance.getRoot() instanceof ConstraintLayout
+                                            ) {
+                                                View rootView = dataBindingInstance.getRoot();
+
+                                                Log.d(TAG, "rootView: " + rootView);
+
+                                                // ViewGroup.LayoutParams layParams = dataBindingInstance.getRoot().getLayoutParams();
+                                                int minWidth = 0;
+                                                int minHeight = 0;
+
+                                                if (rootView instanceof ConstraintLayout) {
+                                                    minWidth = ((ConstraintLayout) rootView).getMinWidth();
+                                                    minHeight = ((ConstraintLayout) rootView).getMinHeight();
+                                                }
+
+                                                if (customDialogInfo.getWidth() != null) {
+                                                    minWidth = customDialogInfo.getWidth();
+                                                }
+                                                if (customDialogInfo.getHeight() != null) {
+                                                    minHeight = customDialogInfo.getHeight();
+                                                }
+
+                                                DisplayResultInfo displayResultInfo = getDisplayInfo(DisplayInfo.getClientDisplayInfo());
+                                                if (minHeight == ViewGroup.LayoutParams.MATCH_PARENT) {
+                                                    minHeight = displayResultInfo.getClientHeightPx();
+                                                    if (rootView instanceof ConstraintLayout) {
+                                                        ((ConstraintLayout) rootView).setMinHeight(minHeight);
+                                                    }
+                                                } else if (minHeight != ViewGroup.LayoutParams.WRAP_CONTENT) {
+                                                    if (rootView instanceof ConstraintLayout) {
+                                                        ((ConstraintLayout) rootView).setMinHeight(minHeight);
+                                                    }
+                                                }
+                                                if (minWidth == ViewGroup.LayoutParams.MATCH_PARENT) {
+                                                    minWidth = displayResultInfo.getClientWidthPx();
+                                                    if (rootView instanceof ConstraintLayout) {
+                                                        ((ConstraintLayout) rootView).setMinWidth(minWidth);
+                                                    }
+                                                } else if (minWidth != ViewGroup.LayoutParams.WRAP_CONTENT) {
+                                                    if (rootView instanceof ConstraintLayout) {
+                                                        ((ConstraintLayout) rootView).setMinWidth(minWidth);
+                                                    }
+                                                }
+                                            }
+
                                             vmInstance.setVmGroupOwnerGuid(customDialogInfo.getUniqueVmOwnerGroupGuid());
                                             vmInstance.setBaseActivityViewModel(baseActivityViewModelInstance);
                                             vmInstance.setDialogGuid(customDialogInfo.getGuid());
@@ -804,6 +871,26 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
                                     }
                                     // customDialogInstances.remove(customDialogInfo.getGuid());
                                     removeCustomDialogReferences(customDialogInfo.getGuid(), false);
+                                }
+
+                                // Set width and height
+                                if (!dialogInstance.isShowing() &&
+                                    dialogInstance.getWindow() != null && (
+                                        customDialogInfo.getWidth() != null ||
+                                        customDialogInfo.getHeight() != null
+                                    )
+                                ) {
+                                    int width = dialogInstance.getWindow().getDecorView().getWidth();
+                                    int height = dialogInstance.getWindow().getDecorView().getHeight();
+
+                                    if (customDialogInfo.getWidth() != null) {
+                                        width = customDialogInfo.getWidth();
+                                    }
+                                    if (customDialogInfo.getHeight() != null) {
+                                        height = customDialogInfo.getHeight();
+                                    }
+
+                                    dialogInstance.getWindow().setLayout(width, height);
                                 }
 
                                 // Set dialog information
@@ -1183,6 +1270,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
                 public Lifecycle getLifecycle() {
                     return retrieveLifecycleOwner().getLifecycle();
                 }
+
+                @Override
+                public LifecycleOwner getLifecycleOwner() {
+                    return retrieveLifecycleOwner();
+                }
             });
 
             baseActivityViewModelInstance.getTakePictureInfoState().observe(this, new Observer<TakePictureInfo>() {
@@ -1283,6 +1375,80 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
                         //Log.i(TAG, "titleHeight = " + titleHeight + " statusHeight = " + statusHeight + " contentViewTop = " + contentViewTop + " contentViewBottom = " + contentViewBottom);
 
                         baseActivityViewModelInstance.onDisplayInfoResult(DisplayResultInfo.getInstance(statusHeight, height, width, contentViewTop, contentViewBottom, contentViewLeft, contentViewRight));
+                    }
+                }
+            });
+
+            baseActivityViewModelInstance.getPopupMenuInfoState().observe(this, new Observer<PopupMenuInfo>() {
+                @Override
+                public void onChanged(PopupMenuInfo popupMenuInfo) {
+                    if (popupMenuInfo != null) {
+                        int viewIdToBind = popupMenuInfo.getViewIdToBindPopupMenu();
+                        View viewToBind = findDialogViewById(viewIdToBind);
+
+                        if (viewToBind == null) {
+                            viewToBind = findViewById(viewIdToBind);
+                        }
+
+                        PopupMenu popupMenu = new PopupMenu(BaseAppCompatActivity.this, viewToBind);
+                        Menu menu = popupMenu.getMenu();
+                        MenuInflater menuInflater = popupMenu.getMenuInflater();
+                        menuInflater.inflate(popupMenuInfo.getMenuToInflate(), menu);
+
+                        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                if (popupMenuInfo.getMenuListener() != null) {
+                                    return popupMenuInfo.getMenuListener().onMenuItemClick(item.getItemId());
+                                }
+                                return true;
+                            }
+                        });
+
+                        popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
+                            @Override
+                            public void onDismiss(PopupMenu menu) {
+                                if (popupMenuInfo.getMenuListener() != null) {
+                                    popupMenuInfo.getMenuListener().onDismiss();
+                                }
+                                removePopupMenuReferences(popupMenuInfo.getGuid(), false);
+                            }
+                        });
+
+                        // Configure menu itens
+                        if (popupMenuInfo.getMenuItensConfigs() != null) {
+                            for (PopupMenuInfo.MenuItemConfig menuItemConfig : popupMenuInfo.getMenuItensConfigs()) {
+                                Boolean menuItemConfigVisibile = menuItemConfig.isVisible();
+
+                                MenuItem menuItem = menu.findItem(menuItemConfig.getMenuItemId());
+
+                                if (menuItem != null) {
+                                    if (menuItemConfigVisibile != null) {
+                                        menuItem.setVisible(menuItemConfigVisibile);
+                                    }
+                                }
+                            }
+                        }
+
+                        popupMenu.show();
+
+                        popupMenuInstances.put(popupMenuInfo.getGuid(), popupMenu);
+                    }
+                }
+            });
+
+            baseActivityViewModelInstance.getOpenSystemAppConfigState().observe(this, new Observer<SystemAppConfigInfo>() {
+                @Override
+                public void onChanged(SystemAppConfigInfo systemAppConfigInfo) {
+                    if (systemAppConfigInfo != null) {
+                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        String packageName = getApplication().getPackageName();
+                        if (systemAppConfigInfo.getPackageName() != null) {
+                            packageName = systemAppConfigInfo.getPackageName();
+                        }
+                        Uri uri = Uri.fromParts("package", packageName, null);
+                        intent.setData(uri);
+                        startActivity(intent);
                     }
                 }
             });
@@ -1513,6 +1679,35 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Remove popup menu reference o avoid memory leaks
+     *
+     * @param guid          Guid of the popup menu being removed
+     * @param shouldDismiss true=Dismiss if visible, false=Don't dismiss
+     */
+    private void removePopupMenuReferences(String guid, boolean shouldDismiss) {
+        if (popupMenuInstances.containsKey(guid)) {
+            PopupMenu popupMenu = popupMenuInstances.get(guid);
+            if (popupMenu != null) {
+                popupMenu.setOnMenuItemClickListener(null);
+                popupMenu.setOnDismissListener(null);
+                if (shouldDismiss) {
+                    popupMenu.dismiss();
+                }
+            }
+
+            popupMenuInstances.remove(guid);
+        }
+    }
+
+    private void removeAllPopupMenuReferences(boolean shouldDismiss) {
+        for (Map.Entry<String, PopupMenu> entry : popupMenuInstances.entrySet()) {
+            removePopupMenuReferences(entry.getKey(), shouldDismiss);
+        }
+        customDialogInstances.clear();
+    }
+
+
     public BaseActivityViewModel getBaseActivityViewModelInstance() {
         if (baseActivityViewModelInstance == null) {
             throw new RuntimeException("BaseActivityViewModel instance is null. You should call this method after the super.onCreate() method.");
@@ -1742,5 +1937,52 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
             backPressedInfo = navigationsBackPressedConfig.get(currentNavId);
         }
         return backPressedInfo;
+    }
+
+    /**
+     * Search in dialog a view by its id
+     *
+     * @param viewId    View id to be found
+     * @return  Null or view if exists
+     */
+    @Nullable
+    private View findDialogViewById(@IdRes int viewId) {
+        for(Map.Entry<String, Dialog> entryAt : customDialogInstances.entrySet()) {
+            Dialog dialogAt = entryAt.getValue();
+            if (dialogAt instanceof android.app.AlertDialog) {
+                android.app.AlertDialog alertDialogAt = (android.app.AlertDialog) dialogAt;
+                if (alertDialogAt.isShowing()) {
+                    Window dialogAtWindow = alertDialogAt.getWindow();
+                    if (dialogAtWindow != null) {
+                        View viewFound = dialogAtWindow.getDecorView().findViewById(viewId);
+                        if (viewFound != null) {
+                            return viewFound;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+
+    @NonNull
+    private DisplayResultInfo getDisplayInfo(@NonNull DisplayInfo displayInfo) {
+        Rect rect = new Rect();
+        Window win = getWindow();
+        win.getDecorView().getWindowVisibleDisplayFrame(rect);
+        int statusHeight = rect.top;
+        View contentView = win.findViewById(Window.ID_ANDROID_CONTENT);
+        int contentViewTop = contentView.getTop();
+        int contentViewBottom = contentView.getBottom();
+        int contentViewLeft = contentView.getLeft();
+        int contentViewRight = contentView.getRight();
+        int titleHeight = contentViewTop - statusHeight;
+        int height = contentViewBottom - contentViewTop;
+        int width = contentViewRight - contentViewLeft;
+
+        //Log.i(TAG, "titleHeight = " + titleHeight + " statusHeight = " + statusHeight + " contentViewTop = " + contentViewTop + " contentViewBottom = " + contentViewBottom);
+
+        return DisplayResultInfo.getInstance(statusHeight, height, width, contentViewTop, contentViewBottom, contentViewLeft, contentViewRight);
     }
 }

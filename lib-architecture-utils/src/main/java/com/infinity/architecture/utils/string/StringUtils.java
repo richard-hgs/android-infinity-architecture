@@ -6,12 +6,28 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 public class StringUtils {
 
@@ -272,5 +288,114 @@ public class StringUtils {
 
     public static String generateGuid() {
         return UUID.randomUUID().toString();
+    }
+
+    public static String escapeForJava(String value, boolean quote, boolean unicode) {
+        StringBuilder builder = new StringBuilder();
+        if(quote) {
+            builder.append("\"");
+        }
+        for(char c : value.toCharArray()) {
+            if (c == '\'') {
+                builder.append("\\'");
+            } else if (c == '\"') {
+                builder.append("\\\"");
+            } else if (c == '\r') {
+                builder.append("\\r");
+            } else if (c == '\n') {
+                builder.append("\\n");
+            } else if (c == '\t') {
+                builder.append("\\t");
+            } else if (unicode && (c < 32 || c >= 127)) {
+                builder.append(String.format("\\u%04x", (int) c));
+            } else {
+                builder.append(c);
+            }
+        }
+        if (quote) {
+            builder.append("\"");
+        }
+        return builder.toString();
+    }
+
+    public static String androidStringXmlToJson(String xmlToConvert) throws ParserConfigurationException, IOException, SAXException, JSONException {
+        JSONObject xmlJsonConvertedInSortOrder = new JSONObject();
+        StringBuilder xmlJsonConvertedInOrder = new StringBuilder("{");
+
+        // Instantiate the Factory
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+        // optional, but recommended
+        // process XML securely, avoid attacks like XML External Entities (XXE)
+        dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+
+        // parse XML file
+        DocumentBuilder db = dbf.newDocumentBuilder();
+
+        // Convert string to a input stream
+        InputStream xmlToConvertStream = new ByteArrayInputStream(xmlToConvert.getBytes());
+
+        Document doc = db.parse(xmlToConvertStream);
+
+        // optional, but recommended
+        // http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+        /*
+            This basically means that the following XML element
+
+            <foo>hello
+            wor
+            ld</foo>
+            could be represented like this in a denormalized node:
+
+            Element foo
+                Text node: ""
+                Text node: "Hello "
+                Text node: "wor"
+                Text node: "ld"
+            When normalized, the node will look like this
+
+            Element foo
+                Text node: "Hello world"
+            And the same goes for attributes: <foo bar="Hello world"/>, comments, etc.
+         */
+        doc.getDocumentElement().normalize();
+
+//            System.out.println("Root Element :" + doc.getDocumentElement().getNodeName());
+//            System.out.println("------");
+
+        // get <string>
+        NodeList list = doc.getElementsByTagName("string");
+
+        for (int nodeIndex=0; nodeIndex<list.getLength(); nodeIndex++) {
+            Node node = list.item(nodeIndex);
+
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
+
+                // get name attribute
+                String attrName = element.getAttribute("name");
+
+                // get element content
+                String elContentText = element.getTextContent();
+
+                // Add received data to json sorted
+                xmlJsonConvertedInSortOrder.put(attrName, elContentText);
+
+                // Add received data to string in order
+                xmlJsonConvertedInOrder.append("\"").append(attrName).append("\":\"").append(StringUtils.escapeForJava(elContentText, false, false)).append("\"");
+                if (nodeIndex < list.getLength() - 1) {
+                    xmlJsonConvertedInOrder.append(",");
+                }
+            }
+        }
+
+        xmlJsonConvertedInOrder.append("}");
+
+
+//            System.out.println("XML As JSONObject: ");
+//            System.out.println(xmlJsonConvertedInOrder.toString());
+
+
+        return xmlJsonConvertedInOrder.toString();
     }
 }

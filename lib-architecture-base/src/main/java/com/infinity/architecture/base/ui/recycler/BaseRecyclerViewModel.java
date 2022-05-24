@@ -17,8 +17,10 @@ import com.infinity.architecture.base.models.ui.LoadingDialogInfo;
 import com.infinity.architecture.base.models.ui.NavigationInfo;
 import com.infinity.architecture.base.models.ui.OpenScreenInfo;
 import com.infinity.architecture.base.models.ui.PickPictureInfo;
+import com.infinity.architecture.base.models.ui.PopupMenuInfo;
 import com.infinity.architecture.base.models.ui.ReceivePictureDialogInfo;
 import com.infinity.architecture.base.models.ui.SpeechRecognizerInfo;
+import com.infinity.architecture.base.models.ui.SystemAppConfigInfo;
 import com.infinity.architecture.base.models.ui.TakePictureInfo;
 import com.infinity.architecture.base.models.ui.ToastyInfo;
 import com.infinity.architecture.base.ui.ActivityResultListener;
@@ -49,15 +51,18 @@ public abstract class BaseRecyclerViewModel<B extends ViewDataBinding, I> extend
     private ArrayList<I> itemList = null;
     private Object[] params = new Object[]{};
 
+    @Nullable
+    private BaseAdapterListener<I> baseAdapterListener;
+
     abstract protected void onBindViewHolder(B binding, ArrayList<I> itemList, I item, int pos);
 
     @Override
-    public void onItemClick(I item, int position) {
+    public void onItemClick(int actionId, I item, int position) {
 
     }
 
     @Override
-    public boolean onItemLongClick(I item, int position) {
+    public boolean onItemLongClick(int actionId, I item, int position) {
         return false;
     }
 
@@ -79,6 +84,10 @@ public abstract class BaseRecyclerViewModel<B extends ViewDataBinding, I> extend
 
     public void setBaseActivityViewModel(BaseActivityViewModel baseActivityViewModel) {
         this.baseActivityViewModel = baseActivityViewModel;
+    }
+
+    void setBaseAdapterListener(@Nullable BaseAdapterListener<I> baseAdapterListener) {
+        this.baseAdapterListener = baseAdapterListener;
     }
 
     // -------------------------------- BASE_ACTIVITY_VIEW_MODEL_FUNCTIONS -----------------------------------
@@ -205,6 +214,16 @@ public abstract class BaseRecyclerViewModel<B extends ViewDataBinding, I> extend
     public void getDisplayInfo(@NonNull DisplayInfo displayInfo, @NonNull DisplayInfoListener displayInfoListener) {
         baseActivityViewModel.getDisplayInfo(displayInfo, displayInfoListener);
     }
+
+    @Override
+    public void setPopupMenu(@NonNull PopupMenuInfo popupMenuInfo) {
+        baseActivityViewModel.setPopupMenu(popupMenuInfo);
+    }
+
+    @Override
+    public void openSystemAppConfig(@NonNull SystemAppConfigInfo systemAppConfigInfo) {
+        baseActivityViewModel.openSystemAppConfig(systemAppConfigInfo);
+    }
     // -------------------------------- BASE_ACTIVITY_VIEW_MODEL_FUNCTIONS -----------------------------------
 
     public CompositeDisposable getCompositeDisposable() {
@@ -232,5 +251,17 @@ public abstract class BaseRecyclerViewModel<B extends ViewDataBinding, I> extend
             return params[position];
         }
         return null;
+    }
+
+    public void dispatchOnItemClickAction(int actionId, I item, int position) {
+        if (baseAdapterListener != null) {
+            baseAdapterListener.onItemClick(actionId, item, position);
+        }
+    }
+
+    public void dispatchOnItemLongClickAction(int actionId, I item, int position) {
+        if (baseAdapterListener != null) {
+            baseAdapterListener.onItemLongClick(actionId, item, position);
+        }
     }
 }

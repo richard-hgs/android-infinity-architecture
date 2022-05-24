@@ -25,13 +25,16 @@ import com.infinity.architecture.base.enums.ui.KeyboardInfoAction;
 import com.infinity.architecture.base.models.ui.ActivityAllBundle;
 import com.infinity.architecture.base.models.ui.KeyboardInfo;
 import com.infinity.architecture.base.ui.adapter.FragmentRequires;
+import com.infinity.architecture.utils.base.FragmentListener;
+import com.infinity.architecture.utils.base.viewpager.ViewPagerFragmentStateAdapterCom;
 import com.infinity.architecture.utils.keyboard.KeyboardListener;
 import com.infinity.architecture.utils.keyboard.KeyboardUtils;
 import com.infinity.architecture.utils.string.StringUtils;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-public abstract class BaseAppCompatFragment extends Fragment {
+@SuppressWarnings("unused")
+public abstract class BaseAppCompatFragment extends Fragment implements ViewPagerFragmentStateAdapterCom {
 
     private final String TAG = "BaseAppCompatFragment";
 
@@ -43,16 +46,19 @@ public abstract class BaseAppCompatFragment extends Fragment {
      */
     private boolean keyboardIsOpen;
 
-    private KeyboardListener.SoftKeyboardToggleListener keyboardToggleListener = new KeyboardListener.SoftKeyboardToggleListener() {
+    private final KeyboardListener.SoftKeyboardToggleListener keyboardToggleListener = new KeyboardListener.SoftKeyboardToggleListener() {
         @Override
         public void onToggleSoftKeyboard(boolean isVisible) {
             keyboardIsOpen = isVisible;
         }
     };
 
+    @Nullable
+    private FragmentListener fragmentListener = null;
+
     private View createdView = null;
 
-    private String fragmentGuid = getClass().getSimpleName() + ":" + StringUtils.generateGuid();
+    private final String fragmentGuid = getClass().getSimpleName() + ":" + StringUtils.generateGuid();
 
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -66,15 +72,13 @@ public abstract class BaseAppCompatFragment extends Fragment {
 
     /**
      * Disable the auto dispatch ViewModel safeConstructor
-     * @return
+     * @return true=Dispatch manually, false=Dispatch Automatically
      */
     protected abstract boolean isDispatchVmSafeConstructorManually();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        baseFragmentViewModel = retrieveBaseViewModel();
     }
 
     @Override
@@ -84,9 +88,6 @@ public abstract class BaseAppCompatFragment extends Fragment {
         if (compositeDisposable.isDisposed()) {
             compositeDisposable = new CompositeDisposable();
         }
-
-//        baseActivityViewModel = ((BaseAppCompatActivity) context).getBaseActivityViewModelInstance();
-//        baseFragmentViewModel.setBaseActivityViewModel(baseActivityViewModel);
     }
 
     @Override
@@ -114,6 +115,11 @@ public abstract class BaseAppCompatFragment extends Fragment {
         boolean isDispatchVmSafeCtorManually = isDispatchVmSafeConstructorManually();
         if (!isDispatchVmSafeCtorManually) {
             dispatchVmSafeConstructor();
+        }
+
+        // Notify onViewCreatedListener
+        if (fragmentListener != null) {
+            fragmentListener.onCreateView(inflater, container, savedInstanceState, baseActivityViewModel, baseFragmentViewModel);
         }
 
         return super.onCreateView(inflater, container, savedInstanceState);
@@ -144,6 +150,11 @@ public abstract class BaseAppCompatFragment extends Fragment {
         vmInstance.setBaseActivityViewModel(baseActivityViewModel);
         vmInstance.safeConstructor(retrieveLifecycleOwner(), getArguments(), getActivity() != null && getActivity().getIntent() != null ? getActivity().getIntent().getExtras() : null);
         return vmInstance;
+    }
+
+    @Override
+    public void setFragmentListener(@Nullable FragmentListener fragmentListener) {
+        this.fragmentListener = fragmentListener;
     }
 
     private void setupObservers() {
@@ -248,6 +259,8 @@ public abstract class BaseAppCompatFragment extends Fragment {
         }
 
         createdView = null;
+
+        fragmentListener = null;
     }
 
     protected void dispatchVmSafeConstructor() {

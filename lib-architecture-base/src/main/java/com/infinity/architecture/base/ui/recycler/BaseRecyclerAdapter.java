@@ -40,6 +40,7 @@ public class BaseRecyclerAdapter<
     private Method bindingSetVmMethod;
 
     private Integer viewIdToBindClick = null;
+    private boolean isClickBindEnabled = false;
 
     private Object[] params = new Object[]{};
 
@@ -56,7 +57,7 @@ public class BaseRecyclerAdapter<
         @Nullable BaseAdapterListenerImpl<I> baseAdapterListener,
         Object ...params
     ) throws Exception {
-        this(adapterRequires, itemList, layoutToInflate, null, holderClass, bindingClass, viewModelClass, baseAdapterListener, params);
+        this(adapterRequires, itemList, layoutToInflate, null, true, holderClass, bindingClass, viewModelClass, baseAdapterListener, params);
     }
 
     public BaseRecyclerAdapter(
@@ -64,6 +65,7 @@ public class BaseRecyclerAdapter<
         @NonNull ArrayList<I> itemList,
         @LayoutRes int layoutToInflate,
         @Nullable Integer viewIdToBindClick,
+        boolean isClickBindEnabled,
         Class<H> holderClass,
         Class<B> bindingClass,
         Class<VM> viewModelClass,
@@ -158,37 +160,39 @@ public class BaseRecyclerAdapter<
     public void onBindViewHolder(@NonNull H holder, int position) {
         I itemAt = itemList.get(position);
         holder.getViewModel().setPosition(position);
-
+        holder.getViewModel().setBaseAdapterListener(baseAdapterListener);
         holder.onBindViewHolder(itemList, itemAt, position);
 
-        if (viewIdToBindClick == null) {
-            holder.getViewDataBinding().getRoot().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    notifyClick(holder, itemAt);
-                }
-            });
+        if (baseAdapterListener != null && isClickBindEnabled) {
+            if (viewIdToBindClick == null) {
+                holder.getViewDataBinding().getRoot().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        notifyClick(holder, v.getId(), itemAt);
+                    }
+                });
 
-            holder.getViewDataBinding().getRoot().setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    return notifyLongClick(holder, itemAt);
-                }
-            });
-        } else {
-            holder.itemView.findViewById(viewIdToBindClick).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    notifyClick(holder, itemAt);
-                }
-            });
+                holder.getViewDataBinding().getRoot().setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        return notifyLongClick(holder, v.getId(), itemAt);
+                    }
+                });
+            } else {
+                holder.itemView.findViewById(viewIdToBindClick).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        notifyClick(holder, v.getId(), itemAt);
+                    }
+                });
 
-            holder.itemView.findViewById(viewIdToBindClick).setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    return notifyLongClick(holder, itemAt);
-                }
-            });
+                holder.itemView.findViewById(viewIdToBindClick).setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        return notifyLongClick(holder, v.getId(), itemAt);
+                    }
+                });
+            }
         }
     }
 
@@ -197,19 +201,19 @@ public class BaseRecyclerAdapter<
         return this.itemList.size();
     }
 
-    private void notifyClick(@NonNull H holder, I itemAt) {
-        holder.getViewModel().onItemClick(itemAt, holder.getAdapterPosition());
+    private void notifyClick(@NonNull H holder, int actionId, I itemAt) {
+        holder.getViewModel().onItemClick(actionId, itemAt, holder.getAdapterPosition());
 
         if (baseAdapterListener != null) {
-            baseAdapterListener.onItemClick(itemAt, holder.getAdapterPosition());
+            baseAdapterListener.onItemClick(actionId, itemAt, holder.getAdapterPosition());
         }
     }
 
-    private boolean notifyLongClick(@NonNull H holder, I itemAt) {
-        holder.getViewModel().onItemLongClick(itemAt, holder.getAdapterPosition());
+    private boolean notifyLongClick(@NonNull H holder, int actionId, I itemAt) {
+        holder.getViewModel().onItemLongClick(actionId, itemAt, holder.getAdapterPosition());
 
         if (baseAdapterListener != null) {
-            return baseAdapterListener.onItemLongClick(itemAt, holder.getAdapterPosition());
+            return baseAdapterListener.onItemLongClick(actionId, itemAt, holder.getAdapterPosition());
         }
 
         return false;

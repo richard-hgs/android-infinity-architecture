@@ -14,6 +14,7 @@ import com.infinity.architecture.base.ui.CustomDialogListener;
 import com.infinity.architecture.base.ui.CustomDialogListenerBase;
 
 
+@SuppressWarnings("unused")
 public class CustomDialogInfo<B extends ViewDataBinding, VM extends BaseDialogViewModel> {
     private boolean show;
     private String guid;
@@ -35,14 +36,19 @@ public class CustomDialogInfo<B extends ViewDataBinding, VM extends BaseDialogVi
 
     private String uniqueVmOwnerGroupGuid;
 
+    private Integer width;
+    private Integer height;
+
     private CustomDialogInfo() {
 
     }
 
+    @NonNull
     public static CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> defDialogNormal(@NonNull String guid, @NonNull String title, @Nullable String message) {
         return defDialogNormal(guid, title, message, true);
     }
 
+    @NonNull
     public static CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> defDialogNormal(@NonNull String guid, @NonNull String title, @Nullable String message, boolean cancelable) {
         CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> customDialogInfo = new CustomDialogInfo<>();
         customDialogInfo.guid = guid;
@@ -54,10 +60,12 @@ public class CustomDialogInfo<B extends ViewDataBinding, VM extends BaseDialogVi
         return customDialogInfo;
     }
 
+    @NonNull
     public static CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> defDialogInfo(@NonNull String guid, @NonNull String title, @Nullable String message) {
         return defDialogInfo(guid, title, message, true, null, null, false, null);
     }
 
+    @NonNull
     public static CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> defDialogInfo(@NonNull String guid, @NonNull String title, @Nullable String message, boolean cancelable, @Nullable String positiveButtonText, @Nullable String negativeButtonText, boolean showNegativeButton, @Nullable CustomDialogListener<BaseDialogViewModel> customDialogListener) {
         CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> customDialogInfo = new CustomDialogInfo<>();
         customDialogInfo.guid = guid;
@@ -73,10 +81,12 @@ public class CustomDialogInfo<B extends ViewDataBinding, VM extends BaseDialogVi
         return customDialogInfo;
     }
 
+    @NonNull
     public static CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> defDialogError(@NonNull String guid, @NonNull String title, @Nullable String message) {
         return defDialogError(guid, title, message, true);
     }
 
+    @NonNull
     public static CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> defDialogError(@NonNull String guid, @NonNull String title, @Nullable String message, boolean cancelable) {
         CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> customDialogInfo = new CustomDialogInfo<>();
         customDialogInfo.guid = guid;
@@ -88,10 +98,12 @@ public class CustomDialogInfo<B extends ViewDataBinding, VM extends BaseDialogVi
         return customDialogInfo;
     }
 
+    @NonNull
     public static CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> defDialogSuccess(@NonNull String guid, @NonNull String title, @Nullable String message) {
         return defDialogSuccess(guid, title, message, true);
     }
 
+    @NonNull
     public static CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> defDialogSuccess(@NonNull String guid, @NonNull String title, @Nullable String message, boolean cancelable) {
         CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> customDialogInfo = new CustomDialogInfo<>();
         customDialogInfo.guid = guid;
@@ -103,10 +115,12 @@ public class CustomDialogInfo<B extends ViewDataBinding, VM extends BaseDialogVi
         return customDialogInfo;
     }
 
+    @NonNull
     public static CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> defDialogAndroid(@NonNull String guid, @NonNull String title, @Nullable String message, boolean cancelable) {
         return defDialogAndroid(guid, title, message, cancelable,"OK", null, false);
     }
 
+    @NonNull
     public static CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> defDialogAndroid(@NonNull String guid, @NonNull String title, @Nullable String message, boolean cancelable, @Nullable String positiveButtonText, @Nullable String negativeButtonText, boolean showNegativeButton) {
         CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> customDialogInfo = new CustomDialogInfo<>();
         customDialogInfo.guid = guid;
@@ -121,7 +135,19 @@ public class CustomDialogInfo<B extends ViewDataBinding, VM extends BaseDialogVi
         return customDialogInfo;
     }
 
-    public static <B extends ViewDataBinding, VM extends BaseDialogViewModel> CustomDialogInfo<B, VM> dialogCustom(@NonNull String guid, @LayoutRes int layout, @NonNull Class<B> bindingClass, @NonNull Class<VM> vmClass, boolean cancelable, boolean transparentBg, @Nullable Bundle dialogArgs, @Nullable CustomDialogListenerBase<VM> customDialogListener) {
+    @NonNull
+    public static <B extends ViewDataBinding, VM extends BaseDialogViewModel> CustomDialogInfo<B, VM> dialogCustom(
+        @NonNull String guid,
+        @LayoutRes int layout,
+        @NonNull Class<B> bindingClass,
+        @NonNull Class<VM> vmClass,
+        boolean cancelable,
+        boolean transparentBg,
+        @Nullable Integer width,
+        @Nullable Integer height,
+        @Nullable Bundle dialogArgs,
+        @Nullable CustomDialogListenerBase<VM> customDialogListener
+    ) {
         CustomDialogInfo<B, VM> customDialogInfo = new CustomDialogInfo<>();
         customDialogInfo.guid = guid;
         customDialogInfo.defaultDialogType = DefaultDialogType.NORMAL;
@@ -137,6 +163,7 @@ public class CustomDialogInfo<B extends ViewDataBinding, VM extends BaseDialogVi
         return customDialogInfo;
     }
 
+    @NonNull
     public static CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> dismissDialog(@NonNull String guid) {
         CustomDialogInfo<ViewDataBinding, BaseDialogViewModel> customDialogInfo = new CustomDialogInfo<>();
         customDialogInfo.guid = guid;
@@ -226,6 +253,16 @@ public class CustomDialogInfo<B extends ViewDataBinding, VM extends BaseDialogVi
     }
 
     @Nullable
+    public Integer getWidth() {
+        return width;
+    }
+
+    @Nullable
+    public Integer getHeight() {
+        return height;
+    }
+
+    @Nullable
     public String getUniqueVmOwnerGroupGuid() {
         return uniqueVmOwnerGroupGuid;
     }
@@ -249,6 +286,7 @@ public class CustomDialogInfo<B extends ViewDataBinding, VM extends BaseDialogVi
     }
 
 
+    @NonNull
     @Override
     public String toString() {
         return "CustomDialogInfo{" +

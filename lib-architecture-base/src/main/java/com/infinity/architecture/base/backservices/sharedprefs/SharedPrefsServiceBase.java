@@ -165,7 +165,24 @@ public class SharedPrefsServiceBase {
                             objSet.add(strJson);
                         }
 
-                        editor.putStringSet(fieldName, objSet);
+                        editor.putStringSet(myFieldName, objSet);
+                    } else if (ReflectionUtils.isPrimitiveArrayType(fieldAt.getType())) {
+                        // Is Primitive array type
+                        Object[] objects = (Object[]) myFieldValue;
+                        Set<String> objSet = new HashSet<String>();
+                        Gson gson = ApiServiceBase.getGsonInstance();
+
+                        for (Object objAt : objects) {
+                            String strValue;
+                            if (ReflectionUtils.isPrimitiveType(objAt)) {
+                                strValue = String.valueOf(objAt);
+                            } else {
+                                strValue = gson.toJson(objAt);
+                            }
+                            objSet.add(strValue);
+                        }
+
+                        editor.putStringSet(myFieldName, objSet);
                     } else if (ReflectionUtils.isArrayListType(fieldAt.getType())) {
                         ArrayList<?> objects = (ArrayList<?>) myFieldValue;
                         Set<String> objSet = new HashSet<>();
@@ -176,7 +193,7 @@ public class SharedPrefsServiceBase {
                             objSet.add(strJson);
                         }
 
-                        editor.putStringSet(fieldName, objSet);
+                        editor.putStringSet(myFieldName, objSet);
                     }
                 }
             }
@@ -246,7 +263,7 @@ public class SharedPrefsServiceBase {
                     Type[] genericTypes = ReflectionUtils.getGenericClassTypes(fieldAt.getGenericType());
                     if (genericTypes.length > 0) {
                         Class<?> genericClass = (Class<?>) genericTypes[0];
-                        Set<String> objSet = sharedPrefs.getStringSet(fieldName, null);
+                        Set<String> objSet = sharedPrefs.getStringSet(myFieldName, null);
 
                         if (objSet != null) {
                             arrayList = (ArrayList<Object>) ReflectionUtils.createListOfType(genericClass);
@@ -260,6 +277,27 @@ public class SharedPrefsServiceBase {
                     } else {
                         throw new Exception("error parsing json element could not find the generic type of ArrayList<?> field");
                     }
+                } else if (ReflectionUtils.isPrimitiveArrayType(fieldAt.getType())) {
+                    Set<String> strSet = sharedPrefs.getStringSet(myFieldName, new HashSet<>());
+                    Gson gson = ApiServiceBase.getGsonInstance();
+                    Class<?> componentClass2 = fieldAt.getType().getComponentType();
+                    if (componentClass2 == null) {
+                        continue;
+                    }
+                    Object[] objList = (Object[]) Array.newInstance(componentClass2, 0);
+                    objList = ReflectionUtils.ensurePrimitiveArrayCapacity(objList, strSet.size());
+                    int i=0;
+                    for(String valAt : strSet) {
+                        if (ReflectionUtils.isPrimitiveType(componentClass2)) {
+                            Object objValAt = stringToPrimitiveValue(componentClass2, valAt);
+                            objList[i] = objValAt;
+                        } else {
+                            Object objValAt = (Object) gson.fromJson(valAt, componentClass2);
+                            objList[i] = objValAt;
+                        }
+                        i++;
+                    }
+                    fieldAt.set(objInstance, objList);
                 }
             }
         }
@@ -308,5 +346,25 @@ public class SharedPrefsServiceBase {
         } else if (field.getType() == Boolean.class || field.getType() == boolean.class) {
             field.set(objOfField, sharedPrefs.getBoolean(fieldName, false));
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T> T stringToPrimitiveValue(@NonNull Class<T> componentClass, @Nullable String objValue) {
+        if (objValue != null) {
+            if (componentClass == int.class || componentClass == Integer.class) {
+                return (T) Integer.valueOf(objValue);
+            } else if (componentClass == String.class) {
+                return (T) objValue;
+            } else if (componentClass == Long.class || componentClass == long.class) {
+                return (T) Long.valueOf(objValue);
+            } else if (componentClass == Float.class || componentClass == float.class) {
+                return (T) Float.valueOf(objValue);
+            } else if (componentClass == Double.class || componentClass == double.class) {
+                return (T) Double.valueOf(objValue);
+            } else if (componentClass == Boolean.class || componentClass == boolean.class) {
+                return (T) Boolean.valueOf(objValue);
+            }
+        }
+        return null;
     }
 }

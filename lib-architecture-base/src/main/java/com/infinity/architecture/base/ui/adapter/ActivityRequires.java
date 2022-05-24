@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModel;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -20,4 +21,6 @@ public interface ActivityRequires {
     FragmentManager getActFragManager();
 
     Lifecycle getLifecycle();
+
+    LifecycleOwner getLifecycleOwner();
 }

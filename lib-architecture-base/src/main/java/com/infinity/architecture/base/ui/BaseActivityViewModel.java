@@ -15,6 +15,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.navigation.NavController;
 
@@ -38,10 +39,12 @@ import com.infinity.architecture.base.models.ui.PermissionInfo;
 import com.infinity.architecture.base.models.ui.EditPictureInfo;
 import com.infinity.architecture.base.models.ui.PickPictureInfo;
 import com.infinity.architecture.base.models.ui.PickPictureResultInfo;
+import com.infinity.architecture.base.models.ui.PopupMenuInfo;
 import com.infinity.architecture.base.models.ui.ReceivePictureDialogInfo;
 import com.infinity.architecture.base.models.ui.ReceivePictureDialogResultInfo;
 import com.infinity.architecture.base.models.ui.SpeechRecognizerInfo;
 import com.infinity.architecture.base.models.ui.SpeechRecognizerResultInfo;
+import com.infinity.architecture.base.models.ui.SystemAppConfigInfo;
 import com.infinity.architecture.base.models.ui.TakePictureInfo;
 import com.infinity.architecture.base.models.ui.TakePictureResultInfo;
 import com.infinity.architecture.base.models.ui.ToastyInfo;
@@ -193,12 +196,24 @@ public abstract class BaseActivityViewModel extends ViewModel implements BaseAct
      */
     private final MutableLiveData<DisplayInfo> getDisplayInfoState = new MutableLiveData<>(null);
 
+    /**
+     * --COMMUNICATE WITH BASE ACTIVITY--
+     * Inflate a popup menu
+     */
+    private final MutableLiveData<PopupMenuInfo> popupMenuInfoState = new MutableLiveData<>(null);
+
+    /**
+     * --COMMUNICATE WITH BASE ACTIVITY--
+     * Open android operating system configuration screen for application package name
+     */
+    private final MutableLiveData<SystemAppConfigInfo> openSystemAppConfigState = new MutableLiveData<>(null);
+
 
     /**
      * --INTERNAL VIEWMODEL COMMUNICATION--
      * Check if location is enabled
      */
-    private final ObservableField<LocationIsEnabledInfo> locationIsEnabledResultState = new ObservableField<LocationIsEnabledInfo>((LocationIsEnabledInfo) null);
+    private final ObservableField<LocationIsEnabledInfo> locationIsEnabledResultState = new ObservableField<>(null);
 
     /**
      * --INTERNAL VIEWMODEL COMMUNICATION--
@@ -574,7 +589,13 @@ public abstract class BaseActivityViewModel extends ViewModel implements BaseAct
     @Override
     public void setCustomDialog(@NonNull CustomDialogInfo<? extends ViewDataBinding, ? extends BaseDialogViewModel> customDialogInfo) {
         customDialogState.setValue(customDialogInfo);
-        customDialogState.setValue(null);
+        customDialogState.observe(activityAdapterRequires.getLifecycleOwner(), new Observer<CustomDialogInfo<? extends ViewDataBinding, ? extends BaseDialogViewModel>>() {
+            @Override
+            public void onChanged(CustomDialogInfo<? extends ViewDataBinding, ? extends BaseDialogViewModel> customDialogInfo) {
+                customDialogState.removeObserver(this);
+                customDialogState.setValue(null);
+            }
+        });
     }
 
     /**
@@ -744,7 +765,7 @@ public abstract class BaseActivityViewModel extends ViewModel implements BaseAct
     public void receivePictureDialog(@NonNull ReceivePictureDialogInfo receivePictureDialogInfo, @NonNull ReceivePictureDialogListener receivePictureDialogListener) {
         Log.d(TAG, "receivePictureDialog");
 
-        setCustomDialog(CustomDialogInfo.dialogCustom(StringUtils.generateGuid(), R.layout.dialog_receive_picture, DialogReceivePictureBinding.class, SimpleDialogReceivePictureViewModel.class, false, false, null, new CustomDialogListenerBase<SimpleDialogReceivePictureViewModel>() {
+        setCustomDialog(CustomDialogInfo.dialogCustom(StringUtils.generateGuid(), R.layout.dialog_receive_picture, DialogReceivePictureBinding.class, SimpleDialogReceivePictureViewModel.class, false, false, null, null, null, new CustomDialogListenerBase<SimpleDialogReceivePictureViewModel>() {
             private boolean buttonClicked = false;
 
             @Override
@@ -823,6 +844,17 @@ public abstract class BaseActivityViewModel extends ViewModel implements BaseAct
         getDisplayInfoState.setValue(displayInfo);
         getDisplayInfoState.setValue(null);
     }
+
+    @Override
+    public void setPopupMenu(@NonNull PopupMenuInfo popupMenuInfo) {
+        popupMenuInfoState.setValue(popupMenuInfo);
+    }
+
+    @Override
+    public void openSystemAppConfig(@NonNull SystemAppConfigInfo systemAppConfigInfo) {
+        openSystemAppConfigState.setValue(systemAppConfigInfo);
+    }
+
 
     /**
      * Returns the disposable for the current view model
@@ -960,6 +992,15 @@ public abstract class BaseActivityViewModel extends ViewModel implements BaseAct
     LiveData<DisplayInfo> getDisplayInfoState() {
         return getDisplayInfoState;
     }
+
+    LiveData<PopupMenuInfo> getPopupMenuInfoState() {
+        return popupMenuInfoState;
+    }
+
+    LiveData<SystemAppConfigInfo> getOpenSystemAppConfigState() {
+        return openSystemAppConfigState;
+    }
+
 
     public void setActivityAdapterRequires(ActivityRequires activityAdapterRequires) {
         this.activityAdapterRequires = activityAdapterRequires;

@@ -37,11 +37,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.infinity.architecture.utils.color.ColorHelper;
+import com.infinity.architecture.utils.regex.RegexMatchGroupInfo;
+import com.infinity.architecture.utils.regex.RegexMatchInfo;
+import com.infinity.architecture.utils.regex.RegexUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -384,219 +388,6 @@ public class DrawableHelper {
         return layerDrawable;
     }
 
-//
-//    @NonNull
-//    private static Drawable getRippleMask(int color, int radius, @NonNull EnBgShapeType shapeType) {
-//        return getRippleMask(color, radius, 0, 0, 0, 0, shapeType, 0, Color.TRANSPARENT, 0);
-//    }
-//
-//    @NonNull
-//    private static Drawable getRippleMask(int color, int radius, int topLeftRadius, int topRightRadius, int bottomRightRadius, int bottomLeftRadius, @NonNull EnBgShapeType shapeType, int borderWidth, int borderColor, int dashSpace) {
-//        float[] outerRadii = new float[8];
-//        // 3 is radius of final ripple,
-//        // instead of 3 you can give required final radius
-//        if (radius > 0) {
-//            Arrays.fill(outerRadii, radius);
-//        }
-//
-//        // 0-1 -> topLeft, 2-3 -> topRight, 4-5 -> bottomRight, 6-7 -> bottomLeft
-//        if (topLeftRadius > 0) {
-//            outerRadii[0] = topLeftRadius;
-//            outerRadii[1] = topLeftRadius;
-//        }
-//
-//        if (topRightRadius > 0) {
-//            outerRadii[2] = topRightRadius;
-//            outerRadii[3] = topRightRadius;
-//        }
-//
-//        if (bottomRightRadius > 0) {
-//            outerRadii[4] = bottomRightRadius;
-//            outerRadii[5] = bottomRightRadius;
-//        }
-//
-//        if (bottomLeftRadius > 0) {
-//            outerRadii[6] = bottomLeftRadius;
-//            outerRadii[7] = bottomLeftRadius;
-//        }
-//
-//        RoundRectShape r = new RoundRectShape(outerRadii, null, null);
-//        ShapeDrawable shapeDrawable = new ShapeDrawable(shapeType == EnBgShapeType.OVAL ? new OvalShape() : r);
-//        shapeDrawable.getPaint().setColor(color);
-//
-//        Drawable[] layers = null;
-//
-//        if (borderWidth > 0 || borderColor != Color.TRANSPARENT) {
-//
-//            ShapeDrawable shapeDrawableBorder = new ShapeDrawable(shapeType == EnBgShapeType.OVAL ? new OvalShape() : r);
-//            shapeDrawableBorder.getPaint().setColor(borderColor != Color.TRANSPARENT ? borderColor : Color.BLACK);
-//            shapeDrawableBorder.getPaint().setStyle(Paint.Style.STROKE);
-//            shapeDrawableBorder.getPaint().setStrokeWidth(borderWidth);
-//            if (dashSpace > 0) {
-//                shapeDrawableBorder.getPaint().setPathEffect(new DashPathEffect(new float[]{(float) dashSpace, (float) dashSpace}, 0f));
-//            }
-//
-//            InsetDrawable insetDrawable = new InsetDrawable(shapeDrawableBorder, Math.round(borderWidth / 2f));
-//
-//            layers = new Drawable[]{insetDrawable, shapeDrawable};
-//        } else {
-//            layers = new Drawable[]{shapeDrawable};
-//        }
-//
-//        LayerDrawable layerDrawable = new LayerDrawable(layers);
-//
-//        return layerDrawable;
-//    }
-//
-//    @NonNull
-//    private static Drawable getStateListDrawable(int normalColor, int pressedColor, int radius, @NonNull EnBgShapeType shapeType) {
-//        return getStateListDrawable(normalColor, pressedColor, radius, 0, 0, 0, 0, shapeType, 0, Color.TRANSPARENT, 0);
-//    }
-//
-//    @NonNull
-//    private static Drawable getStateListDrawable(int normalColor, int pressedColor, int radius, int topLeftRadius, int topRightRadius, int bottomRightRadius, int bottomLeftRadius, @NonNull EnBgShapeType shapeType, int borderWidth, int borderColor, int dashSpace) {
-//        return getDrawable(
-//            normalColor, pressedColor,
-//            radius, radius,
-//            topLeftRadius, topLeftRadius,
-//            topRightRadius, topRightRadius,
-//            bottomRightRadius, bottomRightRadius,
-//            bottomLeftRadius, bottomLeftRadius,
-//            shapeType,
-//            borderWidth, borderWidth,
-//            borderColor, borderColor,
-//            dashSpace,
-//            false
-//        );
-//    }
-//
-//    @NonNull
-//    public static Drawable getDrawable(
-//        int normalColor, int pressedColor,
-//        int radius, int radiusFocused,
-//        int topLeftRadius, int topLeftRadiusFocused,
-//        int topRightRadius, int topRightRadiusFocused,
-//        int bottomRightRadius, int bottomRightRadiusFocused,
-//        int bottomLeftRadius, int bottomLeftRadiusFocused,
-//        @NonNull EnBgShapeType shapeType,
-//        int borderWidth, int borderWidthFocused,
-//        int borderColor, int borderColorFocused,
-//        int dashSpace,
-//        boolean disableStateList
-//    ) {
-//        float[] outerRadiiNormal = new float[8];
-//        float[] outerRadiiFocused = new float[8];
-//        // 3 is radius of final ripple,
-//        // instead of 3 you can give required final radius
-//        if (radius > 0) {
-//            Arrays.fill(outerRadiiNormal, radius);
-//        }
-//        if (radiusFocused > 0) {
-//            Arrays.fill(outerRadiiFocused, radiusFocused);
-//        }
-//
-//        // 0-1 -> topLeft, 2-3 -> topRight, 4-5 -> bottomRight, 6-7 -> bottomLeft
-//        if (topLeftRadius > 0) {
-//            outerRadiiNormal[0] = topLeftRadius;
-//            outerRadiiNormal[1] = topLeftRadius;
-//        }
-//        if (topLeftRadiusFocused > 0) {
-//            outerRadiiFocused[0] = topLeftRadiusFocused;
-//            outerRadiiFocused[1] = topLeftRadiusFocused;
-//        }
-//
-//        if (topRightRadius > 0) {
-//            outerRadiiNormal[2] = topRightRadius;
-//            outerRadiiNormal[3] = topRightRadius;
-//        }
-//        if (topRightRadiusFocused > 0) {
-//            outerRadiiFocused[2] = topRightRadiusFocused;
-//            outerRadiiFocused[3] = topRightRadiusFocused;
-//        }
-//
-//        if (bottomRightRadius > 0) {
-//            outerRadiiNormal[4] = bottomRightRadius;
-//            outerRadiiNormal[5] = bottomRightRadius;
-//        }
-//        if (bottomRightRadiusFocused > 0) {
-//            outerRadiiFocused[4] = bottomRightRadiusFocused;
-//            outerRadiiFocused[5] = bottomRightRadiusFocused;
-//        }
-//
-//        if (bottomLeftRadius > 0) {
-//            outerRadiiNormal[6] = bottomLeftRadius;
-//            outerRadiiNormal[7] = bottomLeftRadius;
-//        }
-//        if (bottomLeftRadiusFocused > 0) {
-//            outerRadiiFocused[6] = bottomLeftRadiusFocused;
-//            outerRadiiFocused[7] = bottomLeftRadiusFocused;
-//        }
-//
-//        RoundRectShape roundRectShapeNormal = new RoundRectShape(outerRadiiNormal, null, null);
-//        RoundRectShape roundRectShapeFocused = new RoundRectShape(outerRadiiFocused, null, null);
-//
-//        ShapeDrawable colorDrawableNormal = new ShapeDrawable(shapeType == EnBgShapeType.OVAL ? new OvalShape() : roundRectShapeNormal);
-//        colorDrawableNormal.getPaint().setColor(normalColor);
-//
-//        ShapeDrawable colorDrawableFocused = new ShapeDrawable(shapeType == EnBgShapeType.OVAL ? new OvalShape() : roundRectShapeFocused);
-//        colorDrawableFocused.getPaint().setColor(pressedColor);
-//
-//        StateListDrawable firstDrawableStates = new StateListDrawable();
-//        firstDrawableStates.addState(new int[]{android.R.attr.state_pressed}, colorDrawableFocused);
-//        firstDrawableStates.addState(new int[]{android.R.attr.state_focused}, colorDrawableFocused);
-//        firstDrawableStates.addState(new int[]{android.R.attr.state_activated}, colorDrawableFocused);
-//        firstDrawableStates.addState(new int[]{}, colorDrawableNormal);
-//        firstDrawableStates.addState(StateSet.WILD_CARD, colorDrawableNormal);
-//
-//        Drawable firstDrawable = firstDrawableStates;
-//
-//        if (disableStateList) {
-//            firstDrawable = colorDrawableNormal;
-//        }
-//
-//        Drawable[] layers = null;
-//
-//        if (borderWidth > 0 || borderColor != Color.TRANSPARENT) {
-//            ShapeDrawable shapeDrawableBorderNormal = new ShapeDrawable(shapeType == EnBgShapeType.OVAL ? new OvalShape() : roundRectShapeNormal);
-//            shapeDrawableBorderNormal.getPaint().setColor(borderColor != Color.TRANSPARENT ? borderColor : Color.BLACK);
-//            shapeDrawableBorderNormal.getPaint().setStyle(Paint.Style.STROKE);
-//            shapeDrawableBorderNormal.getPaint().setStrokeWidth(borderWidth);
-//            if (dashSpace > 0) {
-//                shapeDrawableBorderNormal.getPaint().setPathEffect(new DashPathEffect(new float[]{(float) dashSpace, (float) dashSpace}, 0f));
-//            }
-//
-//            ShapeDrawable shapeDrawableBorderFocused = new ShapeDrawable(shapeType == EnBgShapeType.OVAL ? new OvalShape() : roundRectShapeFocused);
-//            shapeDrawableBorderFocused.getPaint().setColor(borderColorFocused != Color.TRANSPARENT ? borderColorFocused : Color.BLACK);
-//            shapeDrawableBorderFocused.getPaint().setStyle(Paint.Style.STROKE);
-//            shapeDrawableBorderFocused.getPaint().setStrokeWidth(borderWidthFocused);
-//            if (dashSpace > 0) {
-//                shapeDrawableBorderFocused.getPaint().setPathEffect(new DashPathEffect(new float[]{(float) dashSpace, (float) dashSpace}, 0f));
-//            }
-//
-//            StateListDrawable borderDrawableStates = new StateListDrawable();
-//            borderDrawableStates.addState(new int[]{android.R.attr.state_pressed}, shapeDrawableBorderFocused);
-//            borderDrawableStates.addState(new int[]{android.R.attr.state_focused}, shapeDrawableBorderFocused);
-//            borderDrawableStates.addState(new int[]{android.R.attr.state_activated}, shapeDrawableBorderFocused);
-//            borderDrawableStates.addState(new int[]{}, shapeDrawableBorderNormal);
-//            borderDrawableStates.addState(StateSet.WILD_CARD, shapeDrawableBorderNormal);
-//
-//            Drawable borderDrawable = borderDrawableStates;
-//
-//            if (disableStateList) {
-//                borderDrawable = shapeDrawableBorderNormal;
-//            }
-//
-//            InsetDrawable insetDrawable = new InsetDrawable(borderDrawable, Math.round(borderWidth / 2f));
-//
-//            layers = new Drawable[]{insetDrawable, firstDrawable};
-//        } else {
-//            layers = new Drawable[]{firstDrawable};
-//        }
-//
-//        LayerDrawable layerDrawable = new LayerDrawable(layers);
-//        return layerDrawable;
-//    }
-
     public static void setBackgroundKeepingPaddings(@NonNull View view, @NonNull Drawable drawable) {
         int paddingLeft = view.getPaddingStart();
         int paddingTop = view.getPaddingTop();
@@ -605,89 +396,6 @@ public class DrawableHelper {
         view.setBackground(drawable);
         view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
     }
-
-    /*
-        @NonNull
-    private static Drawable getStateListDrawable(int normalColor, int pressedColor, int radius, int shapeType) {
-        return getStateListDrawable(normalColor, pressedColor, radius, 0, 0, 0, 0, shapeType, 0, Color.TRANSPARENT, 0);
-    }
-
-    @NonNull
-    private static Drawable getStateListDrawable(int normalColor, int pressedColor, int radius, int topLeftRadius, int topRightRadius, int bottomRightRadius, int bottomLeftRadius, int shapeType, int borderWidth, int borderColor, int dashSpace) {
-        float[] outerRadii = new float[8];
-        // 3 is radius of final ripple,
-        // instead of 3 you can give required final radius
-        if (radius > 0) {
-            Arrays.fill(outerRadii, radius);
-        }
-
-        // 0-1 -> topLeft, 2-3 -> topRight, 4-5 -> bottomRight, 6-7 -> bottomLeft
-        if (topLeftRadius > 0) {
-            outerRadii[0] = topLeftRadius;
-            outerRadii[1] = topLeftRadius;
-        }
-
-        if (topRightRadius > 0) {
-            outerRadii[2] = topRightRadius;
-            outerRadii[3] = topRightRadius;
-        }
-
-        if (bottomRightRadius > 0) {
-            outerRadii[4] = bottomRightRadius;
-            outerRadii[5] = bottomRightRadius;
-        }
-
-        if (bottomLeftRadius > 0) {
-            outerRadii[6] = bottomLeftRadius;
-            outerRadii[7] = bottomLeftRadius;
-        }
-
-        RoundRectShape r = new RoundRectShape(outerRadii, null, null);
-
-        ShapeDrawable colorDrawablePressed = new ShapeDrawable(shapeType == SHAPE_TYPE_OVAL ? new OvalShape() : r);
-        colorDrawablePressed.getPaint().setColor(pressedColor);
-//        if (radius > 0 && shapeType == SHAPE_TYPE_RECTANGLE) {
-//            colorDrawablePressed.getPaint().setPathEffect(new CornerPathEffect(radius));
-//        }
-        ShapeDrawable colorDrawableNormal = new ShapeDrawable(shapeType == SHAPE_TYPE_OVAL ? new OvalShape() : r);
-        colorDrawableNormal.getPaint().setColor(normalColor);
-//        if (radius > 0 && shapeType == SHAPE_TYPE_RECTANGLE) {
-//            colorDrawableNormal.getPaint().setPathEffect(new CornerPathEffect(radius));
-//        }
-
-        //drawablePressed = colorDrawablePressed;
-        //drawableNormal = colorDrawableNormal;
-
-        StateListDrawable states = new StateListDrawable();
-        states.addState(new int[]{android.R.attr.state_pressed}, colorDrawablePressed);
-        states.addState(new int[]{android.R.attr.state_focused}, colorDrawablePressed);
-        states.addState(new int[]{android.R.attr.state_activated}, colorDrawablePressed);
-        states.addState(new int[]{}, colorDrawableNormal);
-        states.addState(StateSet.WILD_CARD, colorDrawableNormal);
-
-        Drawable[] layers = null;
-
-        if (borderWidth > 0 || borderColor != Color.TRANSPARENT) {
-            ShapeDrawable shapeDrawableBorder = new ShapeDrawable(shapeType == SHAPE_TYPE_OVAL ? new OvalShape() : new RectShape());
-            shapeDrawableBorder.getPaint().setColor(borderColor != Color.TRANSPARENT ? borderColor : Color.BLACK);
-            shapeDrawableBorder.getPaint().setStyle(Paint.Style.STROKE);
-            shapeDrawableBorder.getPaint().setStrokeWidth(borderWidth);
-            if (dashSpace > 0) {
-                shapeDrawableBorder.getPaint().setPathEffect(new DashPathEffect(new float[]{(float) dashSpace, (float) dashSpace}, 0f));
-            }
-
-            InsetDrawable insetDrawable = new InsetDrawable(shapeDrawableBorder, borderWidth / 2);
-
-            layers = new Drawable[]{states, insetDrawable};
-        } else {
-            layers = new Drawable[]{states};
-        }
-
-        LayerDrawable layerDrawable = new LayerDrawable(layers);
-
-        return layerDrawable;
-    }
-     */
 
     /**
      * ESCURECE UMA COR
@@ -943,5 +651,56 @@ public class DrawableHelper {
         matrix.postRotate(angle);
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
                 matrix, true);
+    }
+
+    /**
+     * Converts an Android vector path to an svg image
+     * @param androidXmlVector The android vector being converted
+     * @return  The converted svg image
+     */
+    @NonNull
+    public static String androidVectorPathToSvg(@NonNull String androidXmlVector) {
+        String svg = androidXmlVector;
+        svg = svg.replaceAll("xmlns:android=\"http://schemas.android.com/apk/res/android\"", "xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"");
+        svg = svg.replaceAll("<vector", "<svg");
+        svg = svg.replaceAll("</vector", "</svg");
+        svg = svg.replaceAll("android:pathData", "d");
+        svg = svg.replaceAll("android:fillColor", "fill");
+        svg = svg.replaceAll("android:strokeAlpha", "stroke-opacity");
+        svg = svg.replaceAll("android:fillAlpha", "fill-opacity");
+
+        String height = getFirstMatchFirstGroupValue("android:height=\"+(?<heightGroup>[0-9.]*)dp\"+", svg);
+        String width = getFirstMatchFirstGroupValue("android:height=\"+(?<widthGroup>[0-9.]*)dp\"+", svg);
+
+        String viewPortHeight = getFirstMatchFirstGroupValue("android:viewportHeight=\"+(?<heightGroup>[0-9.]*)\"+", svg);
+        String viewPortWidth = getFirstMatchFirstGroupValue("android:viewportWidth=\"+(?<widthGroup>[0-9.]*)\"+", svg);
+
+        svg = svg.replaceAll("android:height=\"+(?<heightGroup>[0-9.]*)dp\"+", "height=\""+height+"\"");
+        svg = svg.replaceAll("android:width=\"+(?<widthGroup>[0-9.]*)dp\"+", "width=\""+width+"\"");
+
+        svg = svg.replaceAll("android:viewportHeight=\"+[0-9.]*\"+", "");
+        svg = svg.replaceAll("android:viewportWidth=\"+[0-9.]*\"+", "viewBox=\"0 0 "+viewPortWidth+" "+viewPortHeight+"\"");
+
+        return svg;
+    }
+
+    /**
+     * Geet firsst match group for pattern
+     *
+     * @param pattern   Pattern
+     * @param str       String to search
+     * @return          Group match value
+     */
+    @Nullable
+    private static String getFirstMatchFirstGroupValue(String pattern, String str) {
+        ArrayList<RegexMatchInfo> regexInfoViewPortHeight = RegexUtils.searchPatternInStr(pattern, str);
+        if (regexInfoViewPortHeight.size() > 0) {
+            RegexMatchInfo regexMatchAt = regexInfoViewPortHeight.get(0);
+            ArrayList<RegexMatchGroupInfo> groups = regexMatchAt.getGroups();
+            if (groups.size() > 0) {
+                return groups.get(0).getValue();
+            }
+        }
+        return null;
     }
 }

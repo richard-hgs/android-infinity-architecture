@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 
-import com.infinity.architecture.base.R;
-import com.infinity.architecture.base.databinding.DialogReceivePictureBinding;
 import com.infinity.architecture.base.models.ui.ActionBarInfo;
 import com.infinity.architecture.base.models.ui.ActivityResultInfo;
 import com.infinity.architecture.base.models.ui.BackPressedInfo;
@@ -18,8 +16,10 @@ import com.infinity.architecture.base.models.ui.LoadingDialogInfo;
 import com.infinity.architecture.base.models.ui.NavigationInfo;
 import com.infinity.architecture.base.models.ui.OpenScreenInfo;
 import com.infinity.architecture.base.models.ui.PickPictureInfo;
+import com.infinity.architecture.base.models.ui.PopupMenuInfo;
 import com.infinity.architecture.base.models.ui.ReceivePictureDialogInfo;
 import com.infinity.architecture.base.models.ui.SpeechRecognizerInfo;
+import com.infinity.architecture.base.models.ui.SystemAppConfigInfo;
 import com.infinity.architecture.base.models.ui.TakePictureInfo;
 import com.infinity.architecture.base.models.ui.ToastyInfo;
 import com.infinity.architecture.base.ui.adapter.AdapterRequires;
@@ -28,9 +28,18 @@ import com.infinity.architecture.base.ui.listeners.EditPictureListener;
 import com.infinity.architecture.base.ui.listeners.PickPictureListener;
 import com.infinity.architecture.base.ui.listeners.ReceivePictureDialogListener;
 import com.infinity.architecture.base.ui.listeners.TakePictureListener;
+import com.infinity.architecture.base.ui.recycler.BaseRecyclerViewModel;
 import com.infinity.architecture.utils.permission.InterfacePermissao;
 import com.infinity.architecture.utils.speech.SpeechRecognizerListener;
 
+/**
+ * Changes here must be synced in:<br/>
+ * {@link BaseActivityViewModel}<br/>
+ * {@link BaseCustomViewModel}<br/>
+ * {@link BaseDialogViewModel}<br/>
+ * {@link BaseFragmentViewModel}<br/>
+ * {@link BaseRecyclerViewModel}<br/>
+ */
 public interface BaseActivityViewModelFunctions {
     /**
      * Check if permission is available or request the permission
@@ -134,4 +143,8 @@ public interface BaseActivityViewModelFunctions {
     void receivePictureDialog(@NonNull ReceivePictureDialogInfo receivePictureDialogInfo, @NonNull ReceivePictureDialogListener receivePictureDialogListener);
 
     void getDisplayInfo(@NonNull DisplayInfo displayInfo, @NonNull DisplayInfoListener displayInfoListener);
+
+    void setPopupMenu(@NonNull PopupMenuInfo popupMenuInfo);
+
+    void openSystemAppConfig(@NonNull SystemAppConfigInfo systemAppConfigInfo);
 }

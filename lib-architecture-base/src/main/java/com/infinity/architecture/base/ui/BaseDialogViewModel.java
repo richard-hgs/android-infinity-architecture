@@ -22,8 +22,10 @@ import com.infinity.architecture.base.models.ui.LoadingDialogInfo;
 import com.infinity.architecture.base.models.ui.NavigationInfo;
 import com.infinity.architecture.base.models.ui.OpenScreenInfo;
 import com.infinity.architecture.base.models.ui.PickPictureInfo;
+import com.infinity.architecture.base.models.ui.PopupMenuInfo;
 import com.infinity.architecture.base.models.ui.ReceivePictureDialogInfo;
 import com.infinity.architecture.base.models.ui.SpeechRecognizerInfo;
+import com.infinity.architecture.base.models.ui.SystemAppConfigInfo;
 import com.infinity.architecture.base.models.ui.TakePictureInfo;
 import com.infinity.architecture.base.models.ui.ToastyInfo;
 import com.infinity.architecture.base.ui.adapter.AdapterRequires;
@@ -214,6 +216,15 @@ public abstract class BaseDialogViewModel extends ViewModel implements BaseActiv
         baseActivityViewModel.getDisplayInfo(displayInfo, displayInfoListener);
     }
 
+    @Override
+    public void setPopupMenu(@NonNull PopupMenuInfo popupMenuInfo) {
+        baseActivityViewModel.setPopupMenu(popupMenuInfo);
+    }
+
+    @Override
+    public void openSystemAppConfig(@NonNull SystemAppConfigInfo systemAppConfigInfo) {
+        baseActivityViewModel.openSystemAppConfig(systemAppConfigInfo);
+    }
 
     /**
      * Returns the disposable for the current view model

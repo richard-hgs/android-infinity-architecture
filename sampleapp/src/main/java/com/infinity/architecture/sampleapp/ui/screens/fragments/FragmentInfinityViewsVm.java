@@ -100,13 +100,14 @@ public class FragmentInfinityViewsVm extends MyBaseFragmentViewModelOpt {
                     adptCvItems,
                     R.layout.rv_infinity_views_item,
                     null,
+                    true,
                     BaseRecyclerAdapter.getBaseViewHolderClass(),
                     RvInfinityViewsItemBinding.class,
                     RvAdptInfinityViewsVm.class,
                     new BaseAdapterListenerImpl<RvAdptInfinityViewsItem>() {
                         @Override
-                        public void onItemClick(RvAdptInfinityViewsItem item, int position) {
-                            super.onItemClick(item, position);
+                        public void onItemClick(int actionId, RvAdptInfinityViewsItem item, int position) {
+                            super.onItemClick(actionId, item, position);
                             onAdapterItemClick(item);
                         }
                     }
